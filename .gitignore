@@ -12,6 +12,7 @@ node_modules
 **/build
 
 # server js
+server/src/**/*.*.js
 server/src/**/*.js
 server/bin/main.js
 
