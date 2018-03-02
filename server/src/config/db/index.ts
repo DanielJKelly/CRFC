@@ -13,7 +13,7 @@ const poolConfig: PoolConfig = {
 
 export const pool = createPool(poolConfig);
 
-const formatArguments = (args: Array<any> = []) => {
+const formatArguments = (args: Array<any> = []): string => {
     if (!isArray(args) || args.length === 0) {
         return '();';
     }
@@ -49,9 +49,6 @@ const query = (sql: string, args: Array<any>): Promise<any> => {
     });
 };
 
-export const procedure = (
-    procedure: string,
-    args: Array<any> = []
-): Promise<Array<Array<any>>> => {
+export const procedure = (procedure: string, args: Array<any> = []): Promise<Array<Array<any>>> => {
     return query(`CALL ${procedure}${formatArguments(args)}`, args);
 };
