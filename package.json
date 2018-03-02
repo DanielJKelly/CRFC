@@ -1,8 +1,8 @@
 {
-  "name": "CRFC",
+  "name": "crfc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/bin/main.js",
   "scripts": {
     "build:client": "webpack",
     "watch:client": "webpack --watch --mode production",
@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DanielJKelly/CRFC.git"
+    "url": "git+https://github.com/DanielJKelly/crfc.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DanielJKelly/CRFC/issues"
+    "url": "https://github.com/DanielJKelly/crfc/issues"
   },
-  "homepage": "https://github.com/DanielJKelly/CRFC#readme",
+  "homepage": "https://github.com/DanielJKelly/crfc#readme",
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
     "concurrently": "^3.5.1",
