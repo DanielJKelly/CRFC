@@ -1,0 +1,58 @@
+{
+  "name": "CRFC",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:client": "webpack",
+    "watch:client": "webpack --watch --mode production",
+    "start:dev": "concurrently \"npm run watch:client\" \"npm run watch:server\"",
+    "build:sql": "concat-cli -f server/src/sql/procedures/*.sql -o server/src/sql/build/build.sql",
+    "start:server": "node server/bin/main.js",
+    "build:ts": "tsc -p .",
+    "watch:server": "source .ENV_VAR && nodemon -e ts --watch server/src --watch server/bin --exec \"npm run build:ts && npm run start:server\"",
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielJKelly/CRFC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielJKelly/CRFC/issues"
+  },
+  "homepage": "https://github.com/DanielJKelly/CRFC#readme",
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "concurrently": "^3.5.1",
+    "jest": "^22.4.2",
+    "nodemon": "^1.17.1",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.1",
+    "@types/client-sessions": "^0.8.0",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/cors": "^2.8.3",
+    "@types/lodash": "^4.14.104",
+    "@types/mysql": "^2.15.2",
+    "babel-loader": "^7.1.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "bcryptjs": "^2.4.3",
+    "client-sessions": "^0.8.0",
+    "concat-cli": "^4.0.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "lodash": "^4.17.5",
+    "mysql": "^2.15.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.10"
+  }
+}
