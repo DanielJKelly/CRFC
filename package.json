@@ -11,7 +11,7 @@
     "start:server": "node server/bin/main.js",
     "build:ts": "tsc -p .",
     "watch:server": "source .ENV_VAR && nodemon -e ts --watch server/src --watch server/bin --exec \"npm run build:ts && npm run start:server\"",
-    "start": ""
+    "start": "npm run build:ts && node server/bin/main.js"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "concurrently": "^3.5.1",
     "jest": "^22.4.2",
-    "nodemon": "^1.17.1",
-    "typescript": "^2.7.2"
+    "nodemon": "^1.17.1"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.1",
@@ -52,6 +51,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
+    "typescript": "^2.7.2",
     "webpack": "^4.0.1",
     "webpack-cli": "^2.0.10"
   }
