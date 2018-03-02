@@ -2,7 +2,7 @@
   "name": "crfc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/bin/main.js",
   "scripts": {
     "build:client": "webpack",
     "watch:client": "webpack --watch --mode production",
