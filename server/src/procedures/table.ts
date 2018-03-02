@@ -1,7 +1,7 @@
 import Base from './base';
 import { pluralize } from '../middleware/utils.mw';
 
-class Table extends Base {
+class Model extends Base {
     constructor(private model: string) {
         super();
     }
