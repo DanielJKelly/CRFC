@@ -36,3 +36,5 @@ class Model extends Base {
         };
     }; 
 }
+
+export default Model;
