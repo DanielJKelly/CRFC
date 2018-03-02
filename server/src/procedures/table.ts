@@ -1,4 +1,5 @@
 import Base from './base';
+import { pluralize } from '../middleware/utils.mw';
 
 class Table extends Base {
     constructor(private model: string) {
@@ -7,7 +8,7 @@ class Table extends Base {
 
     all() {
         return (args?: any) => {
-            return this.rows(`${this.SQL_GET}${this.model}`, args);
+            return this.rows(`${this.SQL_GET}${pluralize(this.model)}`, args);
         };
     };
     
