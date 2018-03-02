@@ -1,1 +1,23 @@
+# dependencies
 node_modules
+
+# config
+.vscode
+
+# testing
+/coverage
+
+# production
+**/dist
+**/build
+
+# server js
+server/src/**/*.js
+server/bin/main.js
+
+# misc
+.DS_Store
+.ENV_VAR
+
+# logs
+npm-debug.log*
