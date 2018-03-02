@@ -11,10 +11,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @param {any} options
  * @returns {boolean} Returns whether or not the context string contains the given string or regexp.
  */
-exports.isPresent = function (testStr, str, options) {
-    if (str === void 0) { str = ''; }
-    if (options === void 0) { options = { startIndex: 0 }; }
-    var indexOf = -1;
+exports.isPresent = (testStr, str = '', options = { startIndex: 0 }) => {
+    let indexOf = -1;
     if (testStr instanceof RegExp) {
         indexOf = str.substring(options.startIndex).search(testStr);
     }
@@ -35,8 +33,8 @@ exports.isPresent = function (testStr, str, options) {
  * @param {string} str The string to pluralize
  * @returns {string} The pluralized string
  */
-exports.pluralize = function (str) {
-    var last = str.slice(-2);
+exports.pluralize = (str) => {
+    const last = str.slice(-2);
     if (last[1] === 'y') {
         return str.slice(0, -1) + 'ies';
     }
@@ -54,7 +52,7 @@ exports.pluralize = function (str) {
  * @param {string} str The string to test
  * @returns {boolean} Returns true if string is email, false otherwise
  */
-exports.isEmail = function (str) {
+exports.isEmail = (str) => {
     return /^[\w]+@{1}(?:(?!_)[\w])+[.]{1}(?:(?!_)[\w])+$/gi.test(str);
 };
 /**
@@ -65,4 +63,4 @@ exports.isEmail = function (str) {
  * Used to ensure single argument is passed to a callback e.x. parseInt when passed to map won't pass the index as the radix arg
  * @param fn
  */
-exports.unary = function (fn) { return function (arg) { return fn(arg); }; };
+exports.unary = (fn) => (arg) => fn(arg);
