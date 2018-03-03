@@ -23,19 +23,19 @@ BEGIN
         p_username
     );
 
-    SET v_userid = LAST_INSERT_ID();
+    SET @userid = LAST_INSERT_ID();
 
     INSERT INTO Passwords (
         userid, 
         hash
     )
     VALUES(
-        v_userid,
+        @userid,
         p_password
     );
 
-    RETURN
-        v_userid AS id;
+    SELECT
+        @userid AS id;
 
 END$$
 DELIMITER ;
