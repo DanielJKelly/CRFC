@@ -7,7 +7,7 @@
     "build:client": "webpack",
     "watch:client": "webpack --watch --mode production",
     "start:dev": "concurrently \"npm run watch:client\" \"npm run watch:server\"",
-    "build:sql": "concat-cli -f server/src/sql/procedures/*.sql -o server/src/sql/build/build.sql",
+    "build:sql:procs": "concat-cli -f server/src/sql/procedures/*.sql -o server/src/sql/build/procedures.sql",
     "start:server": "node server/bin/main.js",
     "build:ts": "tsc -p .",
     "watch:server": "source .ENV_VAR && nodemon -e ts --watch server/src --watch server/bin --exec \"npm run build:ts && npm run start:server\"",
