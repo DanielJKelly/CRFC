@@ -1,30 +1,80 @@
 const path = require('path');
 
-const clientEntry = path.join(__dirname, 'client', 'src', 'index.jsx');
-const distPath = path.join(__dirname, 'client', 'dist');
+const CLIENT_DEST = path.join(__dirname, './client/dist');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const webpackConfig = {
-    entry: clientEntry,
+let config = {
+    entry: './client/src/index.jsx',
     output: {
-        path: distPath,
+        path: CLIENT_DEST,
         filename: 'bundle.js'
     },
     module: {
         rules: [
             {
                 test: /.jsx?$/,
-                loader: 'babel-loader',
                 exclude: /node_modules/,
-                query: {
-                    plugins: ['transform-class-properties'],
-                    presets: ['env', 'react']
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env', 'react']
+                    }
+                }
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                localIdentName: '[name]__[local]__[hash:base64:5]'
+                            }
+                        },
+                        'postcss-loader'
+                    ]
+                })
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                sourceMap: true,
+                                importLoaders: 2,
+                                localIdentName: '[name]__[local]__[hash:base64:5]'
+                            }
+                        },
+                        'sass-loader'
+                    ]
+                })
+            },
+            {
+                exclude: [
+                    /\.html$/,
+                    /\.(js|jsx)$/,
+                    /\.css$/,
+                    /\.scss$/
+                ],
+                loader: require.resolve('file-loader'),
+                options: {
+                    name: 'static/media/[name].[hash:8].[ext]'
                 }
             }
         ]
     },
     resolve: {
         extensions: ['.js', '.jsx']
-    }
-};
+    },
+    plugins: [
+        new ExtractTextPlugin({ filename: 'index.css', allChunks: true })
+    ]
+}
 
-module.exports = webpackConfig;
+module.exports = config;
