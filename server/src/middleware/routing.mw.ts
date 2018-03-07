@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { isEmpty } from 'lodash';
-import { isPresent } from './utils.mw';
+import { isPresent } from '../utils';
 import { Request, Response, NextFunction } from 'express';
 
 function isServerAsset(path: string) {

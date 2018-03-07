@@ -1,5 +1,5 @@
 import Base from './base';
-import { pluralize } from '../middleware/utils.mw';
+import { pluralize } from '../utils';
 
 class Model extends Base {
     /**
