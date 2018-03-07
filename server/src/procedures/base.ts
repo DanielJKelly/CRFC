@@ -7,32 +7,32 @@ class Base {
     protected SQL_UPDATE = `${this.PREFIX}Update`;
     protected SQL_DELETE = `${this.PREFIX}Delete`;
 
-    rowsets(procedureName: string, args: Array<any> = []): Promise<Array<Array<any>>> {
+    protected rowsets(procedureName: string, args: Array<any> = []): Promise<Array<Array<any>>> {
         return procedure(procedureName, args);
     };
     
-    rows(procedureName: string, args: Array<any> = []): Promise<Array<Array<any>>> {
+    protected rows(procedureName: string, args: Array<any> = []): Promise<Array<Array<any>>> {
         return this.rowsets(procedureName, args)
             .then((rowsets: Array<Array<any>>) => {
                 return rowsets[0];
             });
     };
     
-    row(procedureName: string, args: Array<any> = []): Promise<Array<any>> {
+    protected row(procedureName: string, args: Array<any> = []): Promise<Array<any>> {
         return this.rows(procedureName, args)
             .then((rows: Array<any>) => {
                 return rows[0];
             });
     };
     
-    single(procedureName: string, args: Array<any> = []): Promise<any> {
+    protected single(procedureName: string, args: Array<any> = []): Promise<any> {
         return this.row(procedureName, args)
             .then((row: any) => {
                 return row[0];
             });
     };
     
-    empty(procedureName: string, args: Array<any> = []): Promise<void> {
+    protected empty(procedureName: string, args: Array<any> = []): Promise<void> {
         return this.rowsets(procedureName, args)
             .then(() => {
                 return;
