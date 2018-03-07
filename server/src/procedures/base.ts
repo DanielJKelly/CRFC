@@ -7,7 +7,7 @@ class Base {
     protected SQL_UPDATE = `${this.PREFIX}Update`;
     protected SQL_DELETE = `${this.PREFIX}Delete`;
 
-    protected rowsets(procedureName: string, args: Array<any> = []): Promise<Array<Array<any>>> {
+    private rowsets(procedureName: string, args: Array<any> = []): Promise<Array<Array<any>>> {
         return procedure(procedureName, args);
     };
     
