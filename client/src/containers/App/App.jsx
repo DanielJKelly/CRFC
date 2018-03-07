@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import styles from './App.scss';
+import Routing from '../Routing/Routing';
 
 class App extends Component {
     render() {
-        return <h1 className={styles.primaryHeader}>hello world</h1>;
+        return <Routing />;   
     }
 }
 
