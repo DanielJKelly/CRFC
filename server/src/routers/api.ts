@@ -1,10 +1,9 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import users from './users';
 
 const router = Router();
 
 router
-    .get('/', (req: Request, res: Response, next: NextFunction) => {
-        res.send('hello world');
-    });
+    .use('/users', users);
 
 export default router;

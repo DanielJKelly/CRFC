@@ -39,3 +39,22 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spGetUsers;
+DELIMITER $$
+CREATE PROCEDURE spGetUsers(
+
+)
+
+BEGIN
+
+    SELECT  
+        *
+    FROM
+        Users;
+
+END$$
+DELIMITER ;
+
+
+
