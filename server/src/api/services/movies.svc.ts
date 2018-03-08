@@ -1,6 +1,6 @@
 import BaseService from './base.svc';
 
-export class MovieService extends BaseService {
+export default class MovieService extends BaseService {
     constructor() {
         super('movie');
     }
