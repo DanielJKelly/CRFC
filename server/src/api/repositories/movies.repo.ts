@@ -12,6 +12,9 @@ export default class MovieRepository extends Base {
     }
 
     read(id: number): Promise<any> {
-        return this.svc.read(id);
+        return this.svc.read(id)
+            .then((results) => {
+                return results.data;
+            });
     }
 }
