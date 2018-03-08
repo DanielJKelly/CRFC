@@ -56,5 +56,30 @@ BEGIN
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS spGetUserByEmail;
+DELIMITER $$
+CREATE PROCEDURE spGetUserByEmail(
+  IN p_email varchar(128)
+)
+
+BEGIN
+
+    SELECT  
+        *
+    FROM
+        Users u 
+    JOIN
+        Passwords p 
+    ON
+        u.id = p.userid
+    WHERE 
+        u.email = p_email
+    LIMIT 
+        1;
+
+END$$
+DELIMITER ;
+
+
 
 
