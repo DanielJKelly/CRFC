@@ -1,5 +1,5 @@
 import Base from './base';
-import { pluralize } from '../utils';
+import { pluralize, capitalize } from '../utils';
 
 class Model extends Base {
     /**
@@ -9,6 +9,8 @@ class Model extends Base {
      */
     constructor(protected model: string) {
         super();
+        
+        this.model = capitalize(this.model);
     }
 
     all(args?: any): Promise<Array<Array<any>>> {
