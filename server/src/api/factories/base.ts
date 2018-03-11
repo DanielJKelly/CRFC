@@ -1,7 +1,7 @@
 import ERROR_CODES from '../../errors';
 import * as lodash from 'lodash';
 import { Request, Response, NextFunction } from 'express';
-import { camelCase, camel } from 'change-case';
+import { toCamelCase } from '../../utils';
 
 export const prune = (response: any) => {
     if (lodash.isUndefined(response) || lodash.isEmpty(response) || response.status !== ERROR_CODES.OK) {
@@ -19,7 +19,7 @@ export const prune = (response: any) => {
     }
 
     const res = toMap.map((film: models.server.TMDB.IMovieDataFromServer): models.server.TMDB.IMovieData => {
-        let formatted: models.server.TMDB.ICamelCasedMovieDataFromServer = format({}, film);
+        let formatted: models.server.TMDB.ICamelCasedMovieDataFromServer = format({ toCamelCase: true }, {}, film);
 
         return {
             tmdbId: formatted.id, 
@@ -39,7 +39,7 @@ export const prune = (response: any) => {
     return res;
 };
 
-const format = (destination: any = {}, ...sources: Array<any>) => {
+const format = (options = { toCamelCase: false }, destination: any = {}, ...sources: Array<any>) => {
     if (lodash.isEmpty(sources)) {
         sources.push(destination);
     }
@@ -53,7 +53,10 @@ const format = (destination: any = {}, ...sources: Array<any>) => {
 
         keys.forEach((key) => {
             let value = source[key];
-            key = camelCase(key);
+
+            if (options.toCamelCase) {
+                key = toCamelCase(key);
+            }
 
             if (lodash.isArray(value)) {
                 format(destination[key] || (destination[key] = []), value);
