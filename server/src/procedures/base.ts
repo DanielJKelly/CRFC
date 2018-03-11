@@ -6,6 +6,10 @@ class Base {
     protected SQL_INSERT = `${this.PREFIX}Insert`;
     protected SQL_UPDATE = `${this.PREFIX}Update`;
     protected SQL_DELETE = `${this.PREFIX}Delete`;
+    protected SQL_CONDITIONS = {
+        BY: 'By',
+        FROM: 'From'
+    };
 
     private rowsets(procedureName: string, args: Array<any> = []): Promise<Array<Array<any>>> {
         return procedure(procedureName, args);

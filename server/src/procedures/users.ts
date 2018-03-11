@@ -6,7 +6,7 @@ class Users extends Model {
     }
 
     readByEmail(email: string) {
-        return this.row(`${this.SQL_GET}${this.model}ByEmail`, [email]);
+        return this.row(`${this.SQL_GET}${this.model}${this.SQL_CONDITIONS.BY}Email`, [email]);
     }
 }
 
