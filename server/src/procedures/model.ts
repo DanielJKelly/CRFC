@@ -11,15 +11,15 @@ class Model extends Base {
         super();
     }
 
-    all(args?: any): Promise<any[][]> {
+    all(args?: any): Promise<Array<Array<any>>> {
         return this.rows(`${this.SQL_GET}${pluralize(this.model)}`, args);
     }
     
-    create(args?: any): Promise<any[]> {
+    create(args?: any): Promise<Array<any>> {
         return this.row(`${this.SQL_INSERT}${this.model}`, args);
     }
     
-    read(args?: any): Promise<any[]> {
+    read(args?: any): Promise<Array<any>> {
         return this.row(`${this.SQL_GET}${this.model}`, args);
     }
     
