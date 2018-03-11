@@ -10,10 +10,6 @@ class Movies extends Model {
         this.repo = new MovieRepository();
     }
 
-    readByEmail(email: string) {
-        return this.row(`${this.SQL_GET}${this.model}ByEmail`, [email]);
-    }
-
     readFromApi(id: number) {
         return this.repo.read(id);
     }
