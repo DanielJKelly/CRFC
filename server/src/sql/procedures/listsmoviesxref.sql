@@ -6,7 +6,7 @@ CREATE PROCEDURE spInsertListsMoviesXRef(
 )
 BEGIN
 
-    INSERT INTO ListsMoviesXRefs (
+    INSERT INTO ListsMoviesXRef (
         listid,
         movieid
     )
