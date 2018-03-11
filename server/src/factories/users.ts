@@ -8,6 +8,11 @@ function create(model: any): Array<any> {
     ];
 }
 
+function all(): Array<any> {
+    return [];
+} 
+
 export default {
+    all,
     create
 };

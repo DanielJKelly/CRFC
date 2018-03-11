@@ -79,6 +79,12 @@ export const capitalize = (str: string): string => {
     return str.charAt(0).toUpperCase() + str.substr(1);
 };
 
+/**
+ * @name toCamelCase
+ * @memberOf Utils
+ * @kind Function
+ * @param str {string} the string to camelcase
+ */
 export const toCamelCase = (str: string): string => {
     if (lodash.isEmpty(str) || !lodash.isString(str)) {
         return '';
@@ -92,4 +98,48 @@ export const toCamelCase = (str: string): string => {
     });
 
     return first.concat(upperCased).join('');
+};
+
+/**
+ * @name copy
+ * @memberOf Utils
+ * @kind Function
+ * @description 
+ * Copies properties from any number of source objects and returns a single destination opject
+ * @param options {object} toCamelCase: boolean (will camelcase keys)
+ * @param destination {object} the object to copy to
+ * @param sources {object | Array<object>} the source objects to copy
+ */
+export const copy = (options = { toCamelCase: false }, destination: any = {}, ...sources: Array<any>) => {
+    if (lodash.isEmpty(sources)) {
+        sources.push(destination);
+    }
+
+    sources.forEach((source: any) => {
+        if (!lodash.isObject(source)) {
+            return;
+        }
+
+        let keys = Object.keys(source);
+
+        keys.forEach((key) => {
+            let value = source[key];
+
+            if (options.toCamelCase) {
+                key = toCamelCase(key);
+            }
+
+            if (lodash.isArray(value)) {
+                copy(destination[key] || (destination[key] = []), value);
+                return;
+            } else if (lodash.isObject(value)) {
+                copy(destination[key] || (destination[key] = {}), value);
+                return;
+            }
+    
+            destination[key] = value;
+        });
+    });
+
+    return destination;
 };
