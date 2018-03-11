@@ -6,10 +6,11 @@ import * as lodash from 'lodash';
  * Checks whether or not the given context string contains the given string or regexp.
  * @memberof Utils
  * @kind function
- * @param {string | RegExp} test The test string or regexp.
- * @param {string} context The string to test against.
- * @param {any} options
- * @returns {boolean} Returns whether or not the context string contains the given string or regexp.
+ * @param test The test string or regexp.
+ * @param context The string to test against.
+ * @param options options object
+ * @param options.startIndex the index to start the regex search
+ * @returns Returns whether or not the context string contains the given string or is matched by the regexp.
  */
 export const isPresent = (testStr: string | RegExp, str: string = '', options = { startIndex: 0 }): boolean => {
     let indexOf = -1;
@@ -33,8 +34,8 @@ export const isPresent = (testStr: string | RegExp, str: string = '', options = 
  * Pluralize a string
  * @memberof Utils
  * @kind function
- * @param {string} str The string to pluralize
- * @returns {string} The pluralized string
+ * @param str The string to pluralize
+ * @returns The pluralized string
  */
 export const pluralize = (str: string): string => {
     const last = str.slice(-2);
@@ -54,8 +55,8 @@ export const pluralize = (str: string): string => {
  * Tests whether string is email
  * @memberof Utils
  * @kind function
- * @param {string} str The string to test
- * @returns {boolean} Returns true if string is email, false otherwise
+ * @param str The string to test
+ * @returns Returns true if string is email, false otherwise
  */
 export const isEmail = (str: string): boolean => {
     return /^[\w]+@{1}(?:(?!_)[\w])+[.]{1}(?:(?!_)[\w])+$/gi.test(str);
@@ -83,7 +84,7 @@ export const capitalize = (str: string): string => {
  * @name toCamelCase
  * @memberOf Utils
  * @kind Function
- * @param str {string} the string to camelcase
+ * @param str the string to camelcase
  */
 export const toCamelCase = (str: string): string => {
     if (lodash.isEmpty(str) || !lodash.isString(str)) {
@@ -106,9 +107,9 @@ export const toCamelCase = (str: string): string => {
  * @kind Function
  * @description 
  * Copies properties from any number of source objects and returns a single destination opject
- * @param options {object} toCamelCase: boolean (will camelcase keys)
- * @param destination {object} the object to copy to
- * @param sources {object | Array<object>} the source objects to copy
+ * @param options toCamelCase: boolean (will camelcase keys)
+ * @param destination the object to copy to
+ * @param sources the source objects to copy
  */
 export const copy = (options = { toCamelCase: false }, destination: any = {}, ...sources: Array<any>) => {
     if (lodash.isEmpty(sources)) {
