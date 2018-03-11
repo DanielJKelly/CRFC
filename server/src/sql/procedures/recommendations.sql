@@ -20,5 +20,8 @@ BEGIN
         0
     );
 
+    SELECT 
+        LAST_INSERT_ID() as id;
+
 END$$
 DELIMITER ;
