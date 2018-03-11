@@ -1,18 +1,13 @@
 import crud from './base.svc';
 
-const base = crud('movie');
-
-const read = (id: number): Promise<any> => {
-    return base.get(`${id}`);
-};
+const base = crud('search');
 
 const search = (term: string): Promise<any> => {
-    return base.get('search', {
+    return base.get('movie', {
         query: term.replace(' ',  '-')
     });
 };
 
 export default {
-    read,
     search
 };

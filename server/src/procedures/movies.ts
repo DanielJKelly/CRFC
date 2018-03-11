@@ -1,17 +1,13 @@
 import Model from './model';
-import MovieRepository from '../api/repositories/movies.repo';
+import repo from '../api/repositories/movies.repo';
 
 class Movies extends Model {
-    repo: MovieRepository;
-
     constructor() {
-        super('User');
-
-        this.repo = new MovieRepository();
+        super('Movie');
     }
 
     readFromApi(id: number) {
-        return this.repo.read(id);
+        return repo.read(id);
     }
 }
 
