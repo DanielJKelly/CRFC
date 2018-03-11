@@ -8,15 +8,17 @@ export const prune = (response: any) => {
         throw new Error();
     }
 
-    let data = response.data;
+    let toMap = [];
     let single = false;
 
-    if (response.data && !lodash.isArray(response.data) && !lodash.isEmpty(response.data)) {
+    if (response.data && response.data.results) {
+        toMap = response.data.results;
+    } else {
         single = true;
-        data = [data];
+        toMap.push(response.data);
     }
 
-    const res = data.map((film: models.server.TMDB.IMovieDataFromServer): models.server.TMDB.IMovieData => {
+    const res = toMap.map((film: models.server.TMDB.IMovieDataFromServer): models.server.TMDB.IMovieData => {
         let formatted: models.server.TMDB.ICamelCasedMovieDataFromServer = format({}, film);
 
         return {
@@ -30,7 +32,7 @@ export const prune = (response: any) => {
         };
     });
 
-    if(single) {
+    if (single) {
         return res[0];
     }
 
