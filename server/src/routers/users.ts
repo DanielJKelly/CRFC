@@ -5,6 +5,7 @@ import complete from '../middleware/response.mw';
 let router = Router();
 
 router 
-    .get('/', controllers.all, complete);
+    .get('/', controllers.all, complete)
+    .post('/', controllers.create, complete);
 
 export default router;

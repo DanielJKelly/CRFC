@@ -1,18 +1,15 @@
 import Model from './model';
 import repo from '../api/repositories/movies.repo';
 import { pluralize } from '../utils';
+import validators from '../factories/movies';
 
 class Movies extends Model {
     constructor() {
-        super('movie');
+        super('movie', validators);
     }
 
     readFromApi(id: number) {
         return repo.read(id);
-    }
-
-    readFromList(listId: number) {
-        return this.rows(`${this.SQL_GET}${pluralize(this.model)}ByList`, [listId]);
     }
 }
 

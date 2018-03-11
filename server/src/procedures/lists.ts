@@ -1,10 +1,10 @@
 import Model from './model';
+import validators from '../factories/lists';
 
 class Lists extends Model {
     constructor() {
-        super('list');
+        super('list', validators);
     }
-  
 }
 
 

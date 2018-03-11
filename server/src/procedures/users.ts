@@ -1,8 +1,9 @@
 import Model from './model';
+import validators from '../factories/users';
 
 class Users extends Model {
     constructor() {
-        super('user');
+        super('user', validators);
     }
 
     readByEmail(email: string) {

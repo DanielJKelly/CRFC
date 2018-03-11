@@ -25,16 +25,19 @@ CREATE PROCEDURE spGetList(
 )
 BEGIN
 
-    SELECT
-        *
+    SELECT 
+        m.id,
+        m.title, 
+        m.director, 
+        m.poster
     FROM
-        Lists
-    WHERE
-        id = p_id
-    AND
-        userid = p_userid
-    LIMIT
-        1;
+        ListsMoviesXref lm
+    JOIN
+        Movies m
+    ON
+        lm.movieid = m.id
+    WHERE  
+        lm.listid = p_listid;
 
 END$$
 DELIMITER ;
