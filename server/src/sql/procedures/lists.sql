@@ -39,3 +39,26 @@ BEGIN
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS spInsertList;
+DELIMITER $$
+CREATE PROCEDURE spInsertList(
+    IN p_userid INT,
+    IN p_name varchar(48)
+)
+BEGIN
+
+    INSERT INTO Lists (
+        userid,
+        name
+    )
+    VALUES (
+        p_userid,
+        p_name
+    );
+
+    SELECT
+        LAST_INSERT_ID() AS id;
+
+END$$
+DELIMITER ;
+
