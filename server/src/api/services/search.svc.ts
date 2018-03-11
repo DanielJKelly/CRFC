@@ -4,7 +4,7 @@ const base = crud('search');
 
 const search = (term: string): Promise<any> => {
     return base.get('movie', {
-        query: term.replace(' ',  '-')
+        query: term
     });
 };
 
