@@ -6,10 +6,6 @@ class Movies extends Model {
         super('Movie');
     }
 
-    readByEmail(email: string) {
-        return this.row(`${this.SQL_GET}${this.model}ByEmail`, [email]);
-    }
-
     readFromApi(id: number) {
         return repo.read(id);
     }
