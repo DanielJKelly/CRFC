@@ -71,10 +71,25 @@ export const isEmail = (str: string): boolean => {
  */
 export const unary = (fn: Function) => (arg: any) => fn(arg);
 
-export const capitalize = (str: string) => {
+export const capitalize = (str: string): string => {
     if (lodash.isUndefined(str) || lodash.isEmpty(str)) {
         return '';
     }
     
     return str.charAt(0).toUpperCase() + str.substr(1);
+};
+
+export const toCamelCase = (str: string): string => {
+    if (lodash.isEmpty(str) || !lodash.isString(str)) {
+        return '';
+    }
+
+    const split = str.split('_');
+    const first = split.splice(0,1);
+
+    const upperCased = split.map((str) => {
+        return str.charAt(0).toUpperCase() + str.substr(1);    
+    });
+
+    return first.concat(upperCased).join('');
 };

@@ -7,7 +7,7 @@ function send(req: Request, res: Response): void {
 
     res.error = undefined;
     res.body = undefined;
-    res.status(response.status).send(response.body);
+    res.status(response.status).json(response.body);
 }
 
 function wait(req: Request, res: Response, proceed: () => void): void {
