@@ -3,7 +3,7 @@ import repo from '../api/repositories/movies.repo';
 
 class Movies extends Model {
     constructor() {
-        super('Movie');
+        super('movie');
     }
 
     readFromApi(id: number) {

@@ -2,7 +2,7 @@ import Model from './model';
 
 class Users extends Model {
     constructor() {
-        super('User');
+        super('user');
     }
 
     readByEmail(email: string) {

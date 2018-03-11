@@ -2,7 +2,7 @@ import Model from './model';
 
 class Recommendations extends Model {
     constructor() {
-        super('Recommendation');
+        super('recommendation');
     }
 }
 

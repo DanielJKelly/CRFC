@@ -1,3 +1,5 @@
+import * as lodash from 'lodash';
+
 /**
  * @name isPresent
  * @description
@@ -68,3 +70,11 @@ export const isEmail = (str: string): boolean => {
  * @param fn 
  */
 export const unary = (fn: Function) => (arg: any) => fn(arg);
+
+export const capitalize = (str: string) => {
+    if (lodash.isUndefined(str) || lodash.isEmpty(str)) {
+        return '';
+    }
+    
+    return str.charAt(0).toUpperCase() + str.substr(1);
+};
