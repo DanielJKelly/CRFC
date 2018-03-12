@@ -25,3 +25,20 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spGetRecommendationsByRecipient;
+DELIMITER $$
+CREATE PROCEDURE spGetRecommendationsByRecipient(
+    IN p_recipientid INT
+)
+BEGIN
+
+    SELECT
+        *
+    FROM
+        Recommendations
+    WHERE
+        recipientid = p_recipientid;
+
+END$$
+DELIMITER ;

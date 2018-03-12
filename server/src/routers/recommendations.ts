@@ -5,6 +5,7 @@ import complete from '../middleware/response.mw';
 let router = Router();
 
 router 
-    .post('/:id', controllers.create, complete);
+    .post('/:id', controllers.create, complete)
+    .get('/:recipientid', controllers.readByRecipient, complete);
 
 export default router;

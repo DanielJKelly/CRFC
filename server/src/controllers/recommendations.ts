@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import procedures from '../procedures/recommendations';
+import recommendations from '../procedures/recommendations';
 
 function create(req: Request, res: Response, next: NextFunction) {
     res.promise = procedures.create(req.body)
@@ -10,6 +11,17 @@ function create(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+function readByRecipient(req: Request, res: Response, next: NextFunction) {
+    res.promise = procedures.readByRecipient(req.body)
+        .then((recs) => {
+            return recs;
+        });
+    
+    next();
+
+}
+
 export default {
-    create
+    create,
+    readByRecipient
 };
