@@ -19,16 +19,16 @@ export const prune = (response: any) => {
     }
 
     const res = toMap.map((film: models.server.TMDB.IMovieDataFromServer): models.server.TMDB.IMovieData => {
-        let formatted: models.server.TMDB.ICamelCasedMovieDataFromServer = copy({ toCamelCase: true }, {}, film);
+        let copied: models.server.TMDB.IMovieDataFromServer = copy({}, film);
 
         return {
-            tmdbId: formatted.id, 
-            title: formatted.title,
-            originalTitle: formatted.originalTitle,
-            overview: formatted.overview,
-            posterPath: formatted.posterPath,
-            releaseDate: formatted.releaseDate,
-            runtime: formatted.runtime
+            tmdbId: copied.id, 
+            title: copied.title,
+            originalTitle: copied.original_title,
+            overview: copied.overview,
+            posterPath: copied.poster_path,
+            releaseDate: copied.release_date,
+            runtime: copied.runtime
         };
     });
 

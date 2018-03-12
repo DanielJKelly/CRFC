@@ -111,7 +111,7 @@ export const toCamelCase = (str: string): string => {
  * @param destination the object to copy to
  * @param sources the source objects to copy
  */
-export const copy = (options = { toCamelCase: false }, destination: any = {}, ...sources: Array<any>) => {
+export const copy = (destination: any = {}, ...sources: Array<any>) => {
     if (lodash.isEmpty(sources)) {
         sources.push(destination);
     }
@@ -125,10 +125,6 @@ export const copy = (options = { toCamelCase: false }, destination: any = {}, ..
 
         keys.forEach((key) => {
             let value = source[key];
-
-            if (options.toCamelCase) {
-                key = toCamelCase(key);
-            }
 
             if (lodash.isArray(value)) {
                 copy(destination[key] || (destination[key] = []), value);
