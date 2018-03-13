@@ -42,3 +42,14 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXIST spGetRecommendationsByRecommender;
+DELIMITER $$
+CREATE PROCEDURE spGetRecommendationsByRecommender(
+
+)
+
+BEGIN
+
+END$$
+DELIMITER ;
