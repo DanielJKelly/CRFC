@@ -43,13 +43,19 @@ BEGIN
 END$$
 DELIMITER ;
 
-DROP PROCEDURE IF EXIST spGetRecommendationsByRecommender;
+DROP PROCEDURE IF EXISTS spGetRecommendationsByRecommender;
 DELIMITER $$
 CREATE PROCEDURE spGetRecommendationsByRecommender(
-
+    IN p_recommenderid INT
 )
 
 BEGIN
+    SELECT 
+        * 
+    FROM
+        Recommendations
+    WHERE 
+        recommenderid = p_recommenderid; 
 
 END$$
 DELIMITER ;
