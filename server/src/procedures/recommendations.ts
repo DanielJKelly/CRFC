@@ -7,8 +7,8 @@ class Recommendations extends Model {
         super('recommendation', validators);
     }
 
-    readByRecipient(recipientid: number) {
-      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recipient`, [recipientid]);
+    readByRecipient(id: number) {
+      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recipient`, this.validators.readByRecipient(id));
     }
 }
 

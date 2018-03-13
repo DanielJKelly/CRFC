@@ -12,7 +12,8 @@ class Model extends Base {
         create?: Function,
         read?: Function,
         update?: Function,
-        destroy?: Function
+        destroy?: Function,
+        [action: string]: Function
     }) {
         super();
         

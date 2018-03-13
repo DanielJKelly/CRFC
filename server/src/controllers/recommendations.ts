@@ -12,13 +12,12 @@ function create(req: Request, res: Response, next: NextFunction) {
 }
 
 function readByRecipient(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.readByRecipient(req.body)
+    res.promise = procedures.readByRecipient(req.params.recipientid)
         .then((recs) => {
             return recs;
         });
     
     next();
-
 }
 
 export default {
