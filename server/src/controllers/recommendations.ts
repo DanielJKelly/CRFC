@@ -11,6 +11,15 @@ function create(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+function update(req: Request, res: Response, next: NextFunction) {
+    res.promise = procedures.update(req.params.id)
+        .then((id) => {
+            return id;
+        });
+
+    next();
+}
+
 function readByRecipient(req: Request, res: Response, next: NextFunction) {
     res.promise = procedures.readByRecipient(req.params.recipientid)
         .then((recs) => {
@@ -30,6 +39,7 @@ function readByRecommender(req: Request, res: Response, next: NextFunction) {
 }
 export default {
     create,
+    update,
     readByRecipient,
     readByRecommender
 };

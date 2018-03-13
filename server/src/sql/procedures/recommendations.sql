@@ -59,3 +59,21 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spUpdateRecommendation;
+DELIMITER $$
+CREATE PROCEDURE spUpdateRecommendation(
+    IN p_recommendationid INT 
+)
+
+BEGIN 
+    UPDATE 
+        Recommendations
+    SET 
+        isSeen = 1 
+    WHERE
+        id = p_recommendationid
+    LIMIT 
+        1;
+END$$
+DELIMITER ;

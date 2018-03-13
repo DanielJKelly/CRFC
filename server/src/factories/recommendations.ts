@@ -12,7 +12,14 @@ function readByRecommender(id: number): Array<any> {
     ];
 }
 
+function update(id: number): Array<any> {
+    return [
+        lodash.toNumber(id)
+    ];
+}
+
 export default {
     readByRecipient,
-    readByRecommender 
+    readByRecommender,
+    update
 };
