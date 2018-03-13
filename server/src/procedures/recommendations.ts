@@ -10,6 +10,10 @@ class Recommendations extends Model {
     readByRecipient(id: number) {
       return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recipient`, this.validators.readByRecipient(id));
     }
+
+    readByRecommender(id: number) {
+      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recommender`, this.validators.readByRecommender(id));
+    }
 }
 
 export default new Recommendations();

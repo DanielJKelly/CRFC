@@ -20,7 +20,16 @@ function readByRecipient(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+function readByRecommender(req: Request, res: Response, next: NextFunction) {
+    res.promise = procedures.readByRecommender(req.params.recommenderid)
+        .then((recs) => {
+            return recs;
+        });
+    
+    next();
+}
 export default {
     create,
-    readByRecipient
+    readByRecipient,
+    readByRecommender
 };

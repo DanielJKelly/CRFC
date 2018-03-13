@@ -6,6 +6,13 @@ function readByRecipient(id: number): Array<any> {
     ];
 }
 
+function readByRecommender(id: number): Array<any> {
+    return [
+        lodash.toNumber(id)
+    ];
+}
+
 export default {
-    readByRecipient 
+    readByRecipient,
+    readByRecommender 
 };
