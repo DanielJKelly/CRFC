@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import procedures from '../procedures/recommendations';
-import recommendations from '../procedures/recommendations';
 
 function create(req: Request, res: Response, next: NextFunction) {
     res.promise = procedures.create(req.body)
