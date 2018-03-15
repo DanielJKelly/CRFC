@@ -69,17 +69,20 @@ DROP PROCEDURE IF EXISTS spInsertListsMoviesXRef;
 DELIMITER $$
 CREATE PROCEDURE spInsertListsMoviesXRef(
     p_listid int,
-    p_movieid int
+    p_movieid int,
+    p_ranking int
 )
 BEGIN
 
     INSERT INTO ListsMoviesXRef (
         listid,
-        movieid
+        movieid,
+        ranking
     )
     VALUES (
         p_listid,
-        p_movieid
+        p_movieid,
+        p_ranking
     );
 
     SELECT

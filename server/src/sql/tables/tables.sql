@@ -86,6 +86,7 @@ drop table if exists ListsMoviesXref;
 create table ListsMoviesXref (
     listid int not null,
     movieid int not null,
+	ranking int,
 	_created datetime default current_timestamp,
 	_updated datetime default current_timestamp
 );
