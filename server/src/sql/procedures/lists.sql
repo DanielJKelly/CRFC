@@ -46,17 +46,20 @@ DROP PROCEDURE IF EXISTS spInsertList;
 DELIMITER $$
 CREATE PROCEDURE spInsertList(
     IN p_userid INT,
-    IN p_name varchar(48)
+    IN p_name varchar(48),
+    IN p_isOrdered boolean
 )
 BEGIN
 
     INSERT INTO Lists (
         userid,
-        name
+        name,
+        isOrdered
     )
     VALUES (
         p_userid,
-        p_name
+        p_name,
+        p_isOrdered
     );
 
     SELECT
