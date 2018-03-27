@@ -18,6 +18,10 @@ class Lists extends Model {
     readById(args: any) {
         return this.rows(`${this.SQL_GET}${this.model}${this.SQL_CONDITIONS.BY}Id`, validators.readById(args));
     }
+
+    destroyFromList(args: any) {
+        return this.empty(`${this.SQL_DELETE}${pluralize(this.model)}MoviesXRef`, validators.destroyFromList(args));
+    }
 }
 
    

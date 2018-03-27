@@ -9,6 +9,7 @@ router
     .get('/users/:userid', controllers.readByUser, complete)
     .post('/', controllers.create, complete)
     .post('/:listid', controllers.createListItem, complete)
-    .delete('/', controllers.destroy, complete);
+    .delete('/', controllers.destroy, complete)
+    .delete('/:listid', controllers.destroyFromList, complete);
 
 export default router;

@@ -33,10 +33,18 @@ function destroy(model:any): Array<any> {
     ];
 }
 
+function destroyFromList(model:any): Array<any> {
+    return [
+        model.movieid,
+        model.listid
+    ];
+}
+
 export default {
     readByUser,
     create,
     createListItem,
     readById,
-    destroy
+    destroy,
+    destroyFromList
 };

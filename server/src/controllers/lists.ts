@@ -57,10 +57,23 @@ function destroy(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+function destroyFromList(req: Request, res: Response, next: NextFunction) {
+    const data = Object.assign({}, req.body, req.params);
+    
+    res.promise = procedures.destroyFromList(data)
+        .then(() => {
+            return true;
+        });
+    
+    next();
+
+}
+
 export default {
     readByUser,
     create,
     readById,
     createListItem,
-    destroy
+    destroy,
+    destroyFromList
 }
