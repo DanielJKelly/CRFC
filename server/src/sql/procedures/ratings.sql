@@ -39,3 +39,20 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spUpdateRating;
+DELIMITER $$
+CREATE PROCEDURE spUpdateRating(
+    IN p_id INT,
+    IN p_rating INT
+)
+BEGIN
+    UPDATE
+        Ratings 
+    SET
+        rating = p_rating
+    WHERE 
+        id = p_id
+    LIMIT 1;
+END$$
+DELIMITER ;
