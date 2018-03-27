@@ -13,7 +13,16 @@ function create(model: any): Array<any> {
     ];
 }
 
+function createListItem(model: any): Array<any> {
+    return [
+        model.listid,
+        model.movieid,
+        model.ranking
+    ];
+}
+
 export default {
     readByUser,
-    create
+    create,
+    createListItem
 };

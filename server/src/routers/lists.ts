@@ -6,6 +6,7 @@ const router = Router();
 
 router
     .get('/:userid', controllers.readByUser, complete)
-    .post('/', controllers.create, complete);
+    .post('/', controllers.create, complete)
+    .post('/:listid', controllers.createListItem, complete);
 
 export default router;
