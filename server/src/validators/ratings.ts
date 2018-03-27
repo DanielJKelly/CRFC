@@ -23,12 +23,19 @@ function update(model: any): Array<any> {
 function readByUser(model: any): Array<any> {
     return [
         model.userid
-    ]
+    ];
+}
+
+function readByMovie(model: any): Array<any> {
+    return [
+        model.movieid
+    ];
 }
 
     export default {
         create,
         destroy,
         update,
-        readByUser
+        readByUser,
+        readByMovie
     }
