@@ -111,3 +111,20 @@ BEGIN
         p_listid = id;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spDeleteListsMoviesXRef;
+DELIMITER $$
+CREATE PROCEDURE spDeleteListsMoviesXRef(
+    IN p_movieid INT,
+    IN p_listid INT
+)
+BEGIN
+
+    DELETE 
+
+    FROM 
+        ListsMoviesXRef
+    WHERE
+        p_movieid = movieid AND p_listid = listid;
+END$$
+DELIMITER ;
