@@ -55,3 +55,27 @@ BEGIN
     LIMIT 1;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spGetRatingsByUser;
+DELIMITER $$
+CREATE PROCEDURE spGetRatingsByUser(
+    IN p_userid INT
+)
+BEGIN 
+    SELECT
+        m.id as movieid,
+        m.title,
+        m.director,
+        m.poster,
+        r.userid, 
+        r.rating
+    FROM 
+        Ratings r
+    JOIN
+        Movies m
+    ON 
+        r.movieid = m.id
+    WHERE 
+        p_userid = r.userid;
+END$$
+DELIMITER ;
