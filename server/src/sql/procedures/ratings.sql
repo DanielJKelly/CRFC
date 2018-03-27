@@ -18,22 +18,20 @@ BEGIN
         p_rating
     );
 
-    SELECT
-        LAST_INSERT_ID() AS id;
-
 END$$
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS spDeleteRating;
 DELIMITER $$
 CREATE PROCEDURE spDeleteRating(
-    IN p_id INT
+    IN p_userid INT,
+    IN p_movieid INT
 )
 BEGIN
     DELETE 
     FROM
         Ratings
-    WHERE id = p_id
+    WHERE userid = p_userid AND movieid = p_movieid
     LIMIT 
         1;   
 
@@ -43,7 +41,8 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS spUpdateRating;
 DELIMITER $$
 CREATE PROCEDURE spUpdateRating(
-    IN p_id INT,
+    IN p_userid INT,
+    IN p_movieid INT,
     IN p_rating INT
 )
 BEGIN
@@ -52,7 +51,7 @@ BEGIN
     SET
         rating = p_rating
     WHERE 
-        id = p_id
+        userid = p_userid AND movieid = p_movieid
     LIMIT 1;
 END$$
 DELIMITER ;

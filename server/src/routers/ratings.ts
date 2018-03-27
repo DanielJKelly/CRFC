@@ -5,7 +5,8 @@ import complete from '../middleware/response.mw';
 let router = Router();
 
 router 
-    .post('/:movieid', controllers.create, complete)
-    .delete('/', controllers.destroy, complete);
+    .post('/', controllers.create, complete)
+    .delete('/', controllers.destroy, complete)
+    .put('/', controllers.update, complete);
   
 export default router;
