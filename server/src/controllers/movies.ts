@@ -10,6 +10,15 @@ function readFromApi(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+function create(req: Request, res: Response, next: NextFunction) {
+    res.promise = procedures.create(req.body)
+        .then((id) => {
+            return id;
+        });
+    next();
+}
+
 export default {
-    readFromApi
+    readFromApi,
+    create
 };
