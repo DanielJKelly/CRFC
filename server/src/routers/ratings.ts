@@ -7,6 +7,7 @@ let router = Router();
 router 
     .post('/', controllers.create, complete)
     .delete('/', controllers.destroy, complete)
-    .put('/', controllers.update, complete);
+    .put('/', controllers.update, complete)
+    .get('/:userid', controllers.readByUser, complete);
   
 export default router;

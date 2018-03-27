@@ -26,8 +26,20 @@ function update(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+function readByUser(req: Request, res: Response, next: NextFunction) {
+    const data = Object.assign({}, req.params);
+    
+    res.promise = procedures.readByUser(data)
+        .then((ratings) => {
+            return ratings;
+        });
+    
+    next();
+}
+
 export default {
   create,
   destroy,
-  update
+  update,
+  readByUser
 }

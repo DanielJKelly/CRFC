@@ -21,8 +21,8 @@ function create(req: Request, res: Response, next: NextFunction) {
 }
 
 function createListItem(req: Request, res: Response, next: NextFunction) {
-    const data = Object.assign({}, req.body);
-    data.listid = req.params.listid;
+    const data = Object.assign({}, req.body, req.params);
+    
     if (!data.ranking) {
         data.ranking = null;
     }

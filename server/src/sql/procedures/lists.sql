@@ -20,8 +20,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS spGetList;
 DELIMITER $$
 CREATE PROCEDURE spGetList(
-    IN p_id INT,
-    IN p_userid INT
+    IN p_id INT
 )
 BEGIN
 
