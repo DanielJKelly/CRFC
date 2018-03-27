@@ -4,6 +4,7 @@ create table Lists (
     id int not null auto_increment primary key,
     userid int not null,
     name varchar(48) not null,
+	isOrdered boolean default 1,
 	_created datetime default current_timestamp,
 	_updated datetime default current_timestamp
 );
