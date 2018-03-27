@@ -8,7 +8,8 @@ function readByUser(model: any): Array<any> {
 function create(model: any): Array<any> {
     return [
         model.userid,
-        model.name
+        model.name,
+        model.isOrdered
     ];
 }
 
