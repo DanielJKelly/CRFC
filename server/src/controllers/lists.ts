@@ -46,9 +46,21 @@ function createListItem(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+function destroy(req: Request, res: Response, next: NextFunction) {
+    const data = Object.assign({}, req.body);
+
+    res.promise = procedures.destroy(data)
+        .then(() => {
+            return true;
+        });
+    
+    next();
+}
+
 export default {
     readByUser,
     create,
     readById,
-    createListItem
+    createListItem,
+    destroy
 }

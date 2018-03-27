@@ -8,6 +8,7 @@ router
     .get('/:listid', controllers.readById, complete)
     .get('/users/:userid', controllers.readByUser, complete)
     .post('/', controllers.create, complete)
-    .post('/:listid', controllers.createListItem, complete);
+    .post('/:listid', controllers.createListItem, complete)
+    .delete('/', controllers.destroy, complete);
 
 export default router;

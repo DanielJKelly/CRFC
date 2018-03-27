@@ -27,9 +27,16 @@ function readById(model:any): Array<any> {
     ];
 }
 
+function destroy(model:any): Array<any> {
+    return [
+        model.listid
+    ];
+}
+
 export default {
     readByUser,
     create,
     createListItem,
-    readById
+    readById,
+    destroy
 };
