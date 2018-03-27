@@ -95,3 +95,19 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spDeleteList;
+DELIMITER $$
+CREATE PROCEDURE spDeleteList(
+    IN p_listid INT
+)
+BEGIN
+
+    DELETE 
+
+    FROM 
+        Lists
+    WHERE
+        p_listid = id;
+END$$
+DELIMITER ;

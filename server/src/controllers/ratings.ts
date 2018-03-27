@@ -39,7 +39,6 @@ function readByUser(req: Request, res: Response, next: NextFunction) {
 
 function readByMovie(req: Request, res: Response, next: NextFunction) {
     const data = Object.assign({}, req.params);
-    console.log('in controller with data: ', data);
     res.promise = procedures.readByMovie(data)
         .then((ratings) => {
             return ratings;
