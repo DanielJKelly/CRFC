@@ -14,6 +14,10 @@ class Lists extends Model {
     createListItem(args: any) {
         return this.rows(`${this.SQL_INSERT}${pluralize(this.model)}MoviesXRef`, this.validators.createListItem(args));
     }
+
+    readById(args: any) {
+        return this.rows(`${this.SQL_GET}${this.model}${this.SQL_CONDITIONS.BY}Id`, validators.readById(args));
+    }
 }
 
    

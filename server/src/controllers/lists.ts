@@ -20,6 +20,17 @@ function create(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+function readById(req: Request, res: Response, next: NextFunction) {
+    const data = Object.assign({}, req.params);
+
+    res.promise = procedures.readById(data)
+        .then((list) => {
+            return list;
+        });
+    
+    next();
+}
+
 function createListItem(req: Request, res: Response, next: NextFunction) {
     const data = Object.assign({}, req.body, req.params);
     
@@ -38,5 +49,6 @@ function createListItem(req: Request, res: Response, next: NextFunction) {
 export default {
     readByUser,
     create,
+    readById,
     createListItem
 }

@@ -17,18 +17,19 @@ BEGIN
 END$$
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS spGetList;
+DROP PROCEDURE IF EXISTS spGetListById;
 DELIMITER $$
-CREATE PROCEDURE spGetList(
-    IN p_id INT
+CREATE PROCEDURE spGetListById(
+    IN p_listid INT
 )
 BEGIN
 
     SELECT 
-        m.id,
+        m.id as movieid,
         m.title, 
         m.director, 
-        m.poster
+        m.poster,
+        lm.ranking
     FROM
         ListsMoviesXref lm
     JOIN
@@ -36,7 +37,9 @@ BEGIN
     ON
         lm.movieid = m.id
     WHERE  
-        lm.listid = p_listid;
+        lm.listid = p_listid
+    ORDER BY
+        lm.ranking;
 
 END$$
 DELIMITER ;

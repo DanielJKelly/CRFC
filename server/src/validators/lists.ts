@@ -21,8 +21,15 @@ function createListItem(model: any): Array<any> {
     ];
 }
 
+function readById(model:any): Array<any> {
+    return [
+        model.listid
+    ];
+}
+
 export default {
     readByUser,
     create,
-    createListItem
+    createListItem,
+    readById
 };
