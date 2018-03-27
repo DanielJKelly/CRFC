@@ -6,6 +6,13 @@ function create(model: any): Array<any> {
         ];
     }
 
+function destroy(model: any): Array<any> {
+        return [
+            model.id
+        ];
+    }
+
     export default {
-        create
+        create,
+        destroy
     }

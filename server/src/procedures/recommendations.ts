@@ -1,5 +1,5 @@
 import Model from './model';
-import validators from '../factories/recommendations';
+import validators from '../validators/recommendations';
 import { pluralize } from '../utils'; 
 
 class Recommendations extends Model {

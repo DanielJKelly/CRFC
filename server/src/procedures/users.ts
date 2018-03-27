@@ -1,5 +1,5 @@
 import Model from './model';
-import validators from '../factories/users';
+import validators from '../validators/users';
 
 class Users extends Model {
     constructor() {

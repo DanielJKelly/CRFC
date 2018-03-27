@@ -1,5 +1,5 @@
 import Model from './model';
-import validators from '../factories/ratings';
+import validators from '../validators/ratings';
 import { pluralize } from '../utils'; 
 
 class Ratings extends Model {

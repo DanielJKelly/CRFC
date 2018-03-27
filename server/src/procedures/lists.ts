@@ -1,5 +1,5 @@
 import Model from './model';
-import validators from '../factories/lists';
+import validators from '../validators/lists';
 
 class Lists extends Model {
     constructor() {

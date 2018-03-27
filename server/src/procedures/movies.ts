@@ -1,7 +1,7 @@
 import Model from './model';
 import repo from '../api/repositories/movies.repo';
 import { pluralize } from '../utils';
-import validators from '../factories/movies';
+import validators from '../validators/movies';
 
 class Movies extends Model {
     constructor() {
