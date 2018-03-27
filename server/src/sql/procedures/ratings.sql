@@ -79,3 +79,20 @@ BEGIN
         p_userid = r.userid;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spGetRatingsByMovie;
+DELIMITER $$
+CREATE PROCEDURE spGetRatingsByMovie(
+    IN p_movieid INT
+)
+BEGIN 
+    SELECT
+        userid, 
+        rating
+    FROM 
+        Ratings 
+
+    WHERE 
+        p_movieid = movieid;
+END$$
+DELIMITER ;
