@@ -7,12 +7,12 @@ class Recommendations extends Model {
         super('recommendation', validators);
     }
 
-    readByRecipient(id: number) {
-      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recipient`, this.validators.readByRecipient(id));
+    readByRecipient(args: any) {
+      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recipient`, this.validators.readByRecipient(args));
     }
 
-    readByRecommender(id: number) {
-      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recommender`, this.validators.readByRecommender(id));
+    readByRecommender(args: any) {
+      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recommender`, this.validators.readByRecommender(args));
     }
 }
 
