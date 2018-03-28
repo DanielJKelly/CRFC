@@ -1,65 +1,63 @@
 import { Request, Response, NextFunction } from 'express';
 import procedures from '../procedures/lists';
+import { isUndefined } from 'lodash';
 
-function readByUser(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.readByUser(req.params)
-        .then((lists) => {
-            return lists;
-        });
+async function readByUser(req: Request, res: Response, next: NextFunction) {
+    let userid = { id: req.params.id };
+    
+    let lists = await procedures.readByUser(userid);
+    
+    res.body = lists;
     
     next();
 }
 
-function create(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.create(req.body)
-        .then((id) => {
-            return id;
-        });
-    
+async function create(req: Request, res: Response, next: NextFunction) {
+    let model = req.body;
+
+    let id = await procedures.create(req.body);
+
+    res.body = id;
+   
     next();
 }
 
-function readById(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.readById(req.params)
-        .then((list) => {
-            return list;
-        });
+async function readById(req: Request, res: Response, next: NextFunction) {
+    let listid = { id: req.params.id };
     
+    let listOfMovies = await procedures.readById(listid);
+
+    res.body = listOfMovies;
+   
     next();
 }
 
-function createListItem(req: Request, res: Response, next: NextFunction) {
-    const data = Object.assign({}, req.body, req.params);
-    console.log('data: ', data);
+async function createListItem(req: Request, res: Response, next: NextFunction) {
+    let movieid = { id: req.params.id };
+    let model = Object.assign({}, req.body, movieid);
     
-    if (!data.ranking) {
-        data.ranking = null;
+    if (isUndefined(model.ranking)) {
+        model.ranking = null;
     }
 
-    res.promise = procedures.createListItem(data)
-        .then((id) => {
-            return id;
-        });
+    let id = await procedures.createListItem(model);
+
+    res.body = id;
     
     next();
 }
 
-function destroy(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.destroy(req.body)
-        .then(() => {
-            return true;
-        });
+async function destroy(req: Request, res: Response, next: NextFunction) {
+    await procedures.destroy(req.body);
     
     next();
 }
 
-function destroyFromList(req: Request, res: Response, next: NextFunction) {
-    const data = Object.assign({}, req.body, req.params);
+async function destroyFromList(req: Request, res: Response, next: NextFunction) {
+    let listid = { id: req.params.id };
+    let model = Object.assign({}, req.body, listid);
     
-    res.promise = procedures.destroyFromList(data)
-        .then(() => {
-            return true;
-        });
+    await procedures.destroyFromList(model);
     
     next();
 

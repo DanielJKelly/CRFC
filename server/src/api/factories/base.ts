@@ -1,4 +1,4 @@
-import ERROR_CODES from '../../errors';
+import { ERROR_CODES } from '../../errors';
 import * as lodash from 'lodash';
 import { Request, Response, NextFunction } from 'express';
 import { toCamelCase, copy } from '../../utils';

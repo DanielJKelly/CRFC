@@ -1,15 +1,16 @@
 import { Router } from 'express';
 import controllers from '../controllers/lists';
 import complete from '../middleware/response.mw';
+import asyncWrapper from '../middleware/async.mw';
 
 const router = Router();
 
 router
-    .get('/:id', controllers.readById, complete)
-    .get('/users/:id', controllers.readByUser, complete)
-    .post('/', controllers.create, complete)
-    .post('/:id', controllers.createListItem, complete)
-    .delete('/', controllers.destroy, complete)
-    .delete('/:id', controllers.destroyFromList, complete);
+    .get('/:id', asyncWrapper(controllers.readById), complete)
+    .get('/users/:id', asyncWrapper(controllers.readByUser), complete)
+    .post('/', asyncWrapper(controllers.create), complete)
+    .post('/:id', asyncWrapper(controllers.createListItem), complete)
+    .delete('/', asyncWrapper(controllers.destroy), complete)
+    .delete('/:id', asyncWrapper(controllers.destroyFromList), complete);
 
 export default router;
