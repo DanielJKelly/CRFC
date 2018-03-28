@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import controllers from '../controllers/movies';
 import complete from '../middleware/response.mw';
+import asyncWrapper from '../middleware/async.mw';
 
 const router = Router();
 
 router
-    .get('/:id', controllers.readFromApi, complete)
-    .post('/', controllers.create, complete);
+    .get('/:id', asyncWrapper(controllers.readFromApi), complete)
+    .post('/', asyncWrapper(controllers.create), complete);
 
 export default router;

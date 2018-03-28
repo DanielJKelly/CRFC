@@ -1,20 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
 import procedures from '../procedures/movies';
 
-function readFromApi(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.readFromApi(req.params.id)
-        .then((movie) => {
-            return movie;
-        });
+async function readFromApi(req: Request, res: Response, next: NextFunction) {
+    let movie = await procedures.readFromApi(req.params.id);
+    
+    res.body = movie;
     
     next();
 }
 
-function create(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.create(req.body)
-        .then((id) => {
-            return id;
-        });
+async function create(req: Request, res: Response, next: NextFunction) {
+    let id = await procedures.create(req.body)
+    
+    res.body = id;
+    
     next();
 }
 

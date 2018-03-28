@@ -1,4 +1,4 @@
-function create(model: any): Array<any> {
+function create(model: any): [number, string, string, string] {
     return [
         model.mdbid,
         model.title,
