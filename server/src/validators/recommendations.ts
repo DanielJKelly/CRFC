@@ -18,8 +18,17 @@ function update(id: number): Array<any> {
     ];
 }
 
+function create(model: any): Array<any> {
+    return [
+        model.recommenderid,
+        model.recipientid, 
+        model.movieid
+    ];
+}
+
 export default {
     readByRecipient,
     readByRecommender,
-    update
+    update,
+    create
 };

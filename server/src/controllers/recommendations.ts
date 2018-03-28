@@ -1,38 +1,30 @@
 import { Request, Response, NextFunction } from 'express';
 import procedures from '../procedures/recommendations';
 
-function create(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.create(req.body)
-        .then((id) => {
-            return id;
-        });
+async function create(req: Request, res: Response, next: NextFunction) {
+    let result = await procedures.create(req.body);
+    res.promise = Promise.resolve(result);
 
     next();
 }
 
-function update(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.update(req.params.id)
-        .then((id) => {
-            return id;
-        });
+async function update(req: Request, res: Response, next: NextFunction) {
+    let result = await procedures.update(req.params.id);
+    res.promise = Promise.resolve(result);
 
     next();
 }
 
-function readByRecipient(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.readByRecipient(req.params.recipientid)
-        .then((recs) => {
-            return recs;
-        });
+async function readByRecipient(req: Request, res: Response, next: NextFunction) {
+    let result = procedures.readByRecipient(req.params.recipientid);
+    res.promise = Promise.resolve(result);
     
     next();
 }
 
-function readByRecommender(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.readByRecommender(req.params.recommenderid)
-        .then((recs) => {
-            return recs;
-        });
+async function readByRecommender(req: Request, res: Response, next: NextFunction) {
+    let result = procedures.readByRecommender(req.params.recommenderid);
+    res.promise = Promise.resolve(result);
     
     next();
 }
