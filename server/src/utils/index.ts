@@ -1,4 +1,5 @@
 import * as lodash from 'lodash';
+import { isObject } from 'util';
 
 /**
  * @name isPresent
@@ -140,3 +141,27 @@ export const copy = (destination: any = {}, ...sources: Array<any>) => {
 
     return destination;
 };
+
+/**
+ * @name idPropsToNums
+ * @memberOf Utils
+ * @kind Function
+ * @description 
+ * Takes any id properties ('movieid', 'id') and converts their values to numbers (if the values were strings)
+ * @param obj the input object
+ */
+export const idPropsToNums = (obj: any = {}): void => {
+    if (!isObject(obj)) {
+        return;
+    }
+    const regexId = /^.*id$/i;
+    
+    let tuples: Array<[string, any]> = Object.entries(obj);
+    tuples.forEach((tuple) => {
+        let key = tuple[0];
+        let val = tuple[1];
+        if (typeof val === 'string' && regexId.test(key)) {
+            obj[key] = lodash.toNumber(val);
+        }
+    });
+}

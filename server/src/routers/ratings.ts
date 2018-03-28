@@ -8,7 +8,7 @@ router
     .post('/', controllers.create, complete)
     .delete('/', controllers.destroy, complete)
     .put('/', controllers.update, complete)
-    .get('/:userid', controllers.readByUser, complete)
-    .get('/movies/:movieid', controllers.readByMovie, complete);
+    .get('/:id', controllers.readByUser, complete)
+    .get('/movies/:id', controllers.readByMovie, complete);
   
 export default router;

@@ -2,8 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import procedures from '../procedures/lists';
 
 function readByUser(req: Request, res: Response, next: NextFunction) {
-    const userid = { userid: req.params.userid }
-    res.promise = procedures.readByUser(userid)
+    res.promise = procedures.readByUser(req.params)
         .then((lists) => {
             return lists;
         });
@@ -21,9 +20,7 @@ function create(req: Request, res: Response, next: NextFunction) {
 }
 
 function readById(req: Request, res: Response, next: NextFunction) {
-    const data = Object.assign({}, req.params);
-
-    res.promise = procedures.readById(data)
+    res.promise = procedures.readById(req.params)
         .then((list) => {
             return list;
         });
@@ -33,6 +30,7 @@ function readById(req: Request, res: Response, next: NextFunction) {
 
 function createListItem(req: Request, res: Response, next: NextFunction) {
     const data = Object.assign({}, req.body, req.params);
+    console.log('data: ', data);
     
     if (!data.ranking) {
         data.ranking = null;
@@ -47,9 +45,7 @@ function createListItem(req: Request, res: Response, next: NextFunction) {
 }
 
 function destroy(req: Request, res: Response, next: NextFunction) {
-    const data = Object.assign({}, req.body);
-
-    res.promise = procedures.destroy(data)
+    res.promise = procedures.destroy(req.body)
         .then(() => {
             return true;
         });

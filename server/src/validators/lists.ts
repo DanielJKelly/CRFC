@@ -1,11 +1,11 @@
 
-function readByUser(model: any): Array<any> {
+function readByUser(model: any): [number] {
     return [
-        model.userid
+        model.id
     ];
 }
 
-function create(model: any): Array<any> {
+function create(model: any): [number, string, boolean] {
     return [
         model.userid,
         model.name,
@@ -13,21 +13,21 @@ function create(model: any): Array<any> {
     ];
 }
 
-function createListItem(model: any): Array<any> {
+function createListItem(model: any): [number, number, number] {
     return [
-        model.listid,
+        model.id,
         model.movieid,
         model.ranking
     ];
 }
 
-function readById(model:any): Array<any> {
+function readById(model:any): [number] {
     return [
-        model.listid
+        model.id
     ];
 }
 
-function destroy(model:any): Array<any> {
+function destroy(model:any): [number] {
     return [
         model.listid
     ];
@@ -36,7 +36,7 @@ function destroy(model:any): Array<any> {
 function destroyFromList(model:any): Array<any> {
     return [
         model.movieid,
-        model.listid
+        model.id
     ];
 }
 

@@ -3,6 +3,7 @@ import { join } from 'path';
 import stateRouting from './middleware/routing.mw';
 import api from './routers/api';
 import * as morgan from 'morgan';
+import params from './middleware/params.mw';
 
 const clientDist = join(__dirname, '..', '..', 'client', 'dist');
 
@@ -13,6 +14,7 @@ const configure = (app: express.Application): void => {
         .use(express.json())
         .use(express.urlencoded({ extended: false }))
         .use('/api/v1', api)
+        .use(params())
         .use(stateRouting);
 };
 

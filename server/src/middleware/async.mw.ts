@@ -1,17 +1,13 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 import {map, flattenDeep} from 'lodash';
 
-const asyncHandler = (fn: Function) =>
-  (req: Request, res: Response, next: NextFunction) => {
-    Promise.resolve(fn(req, res, next))
-      .catch(next);
-  };
+const asyncHandler = (handler: RequestHandler): (req: Request, res: Response, next: NextFunction) => void => { 
+    return (req: Request, res: Response, next: NextFunction) => {
+        Promise.resolve((handler(req, res, next)))
+            .catch(next);
+    };
+};
 
-const asyncHandlerArr = (...handlers: Array<any>) => {
+export default (...handlers: Array<any>) => {
         return map(flattenDeep(handlers), (handler) => asyncHandler(handler));
     };
-
-export default {
-    asyncHandler, 
-    asyncHandlerArr
-}

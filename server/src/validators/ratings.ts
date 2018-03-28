@@ -1,4 +1,4 @@
-function create(model: any): Array<any> {
+function create(model: any): [number, number, number] {
         return [
             model.userid,
             model.movieid,
@@ -6,13 +6,13 @@ function create(model: any): Array<any> {
         ];
     }
 
-function destroy(model: any): Array<any> {
+function destroy(model: any): [number, number] {
         return [
             model.userid,
             model.movieid
         ];
     }
-function update(model: any): Array<any> {
+function update(model: any): [number, number, number] {
     return [
         model.userid,
         model.movieid,
@@ -20,15 +20,15 @@ function update(model: any): Array<any> {
     ];
 }
 
-function readByUser(model: any): Array<any> {
+function readByUser(model: any): [number] {
     return [
-        model.userid
+        model.id
     ];
 }
 
-function readByMovie(model: any): Array<any> {
+function readByMovie(model: any): [number] {
     return [
-        model.movieid
+        model.id
     ];
 }
 

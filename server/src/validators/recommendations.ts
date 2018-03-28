@@ -1,24 +1,22 @@
-import * as lodash from 'lodash';
-
-function readByRecipient(id: number): Array<any> {
+function readByRecipient(model: any): [number] {
     return [
-        lodash.toNumber(id)
+        model.id
     ];
 }
 
-function readByRecommender(id: number): Array<any> {
+function readByRecommender(model: any): [number] {
     return [
-        lodash.toNumber(id)
+        model.id
     ];
 }
 
-function update(id: number): Array<any> {
+function update(model: any): [number] {
     return [
-        lodash.toNumber(id)
+        model.id
     ];
 }
 
-function create(model: any): Array<any> {
+function create(model: any): [number, number, number] {
     return [
         model.recommenderid,
         model.recipientid, 
