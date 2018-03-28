@@ -49,6 +49,8 @@ async function createListItem(req: Request, res: Response, next: NextFunction) {
 
 async function destroy(req: Request, res: Response, next: NextFunction) {
     await procedures.destroy(req.body);
+
+    res.body = true;
     
     next();
 }
@@ -58,6 +60,8 @@ async function destroyFromList(req: Request, res: Response, next: NextFunction) 
     let model = Object.assign({}, req.body, listid);
     
     await procedures.destroyFromList(model);
+
+    res.body = true;
     
     next();
 

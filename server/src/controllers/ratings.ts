@@ -1,48 +1,47 @@
 import { Request, Response, NextFunction } from 'express';
 import procedures from '../procedures/ratings';
 
-function create(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.create(req.body)
-        .then(() => {
-            return true;
-        });
+async function create(req: Request, res: Response, next: NextFunction) {
+    await procedures.create(req.body);
+
+    res.body = true;
+
     next();
 }
 
-function destroy(req: Request, res: Response, next: NextFunction) {
-  res.promise = procedures.destroy(req.body)
-        .then(() => {
-            return true;
-        });
+async function destroy(req: Request, res: Response, next: NextFunction) {
+    await procedures.destroy(req.body);
+
+    res.body = true;
+        
     next();
 
 }
 
-function update(req: Request, res: Response, next: NextFunction) {
-    res.promise = procedures.update(req.body)
-        .then(() => {
-            return true;
-        });
+async function update(req: Request, res: Response, next: NextFunction) {
+    await procedures.update(req.body);
+
+    res.body = true;
+        
     next();
 }
 
-function readByUser(req: Request, res: Response, next: NextFunction) {
-    const data = Object.assign({}, req.params);
+async function readByUser(req: Request, res: Response, next: NextFunction) {
+    let userid = { id: req.params.id };
     
-    res.promise = procedures.readByUser(data)
-        .then((moviesWithRatings) => {
-            return moviesWithRatings;
-        });
-    
+    let moviesWithRatings = await procedures.readByUser(userid);
+
+    res.body = moviesWithRatings;
+        
     next();
 }
 
-function readByMovie(req: Request, res: Response, next: NextFunction) {
-    const data = Object.assign({}, req.params);
-    res.promise = procedures.readByMovie(data)
-        .then((ratings) => {
-            return ratings;
-        });
+async function readByMovie(req: Request, res: Response, next: NextFunction) {
+    let movieid = { id: req.params.id };
+    
+    let ratings = await procedures.readByMovie(movieid);
+    
+    res.body = ratings;
     
     next();
 }
