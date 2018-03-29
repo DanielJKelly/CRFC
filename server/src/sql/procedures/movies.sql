@@ -88,3 +88,39 @@ BEGIN
     );
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spGetMoviesByUser;
+DELIMITER $$ 
+CREATE PROCEDURE spGetMoviesByUser(
+    IN p_userid int
+)
+BEGIN  
+    SELECT 
+        m.id, 
+        m.title,
+        m.director,
+        m.poster 
+    FROM 
+        Movies m 
+    JOIN 
+        UsersMoviesXRef um
+    ON 
+        m.id = um.movieid AND um.userid = p_userid;
+END$$
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spGetUsersByMovie;
+DELIMITER $$ 
+CREATE PROCEDURE spGetUsersByMovie(
+    IN p_movieid int
+)
+BEGIN  
+    SELECT 
+        userid
+    FROM 
+        UsersMoviesXRef
+    WHERE
+        movieid = p_movieid;
+END$$
+DELIMITER ;
+
