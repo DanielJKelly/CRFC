@@ -7,6 +7,25 @@ function create(model: any): [number, string, string, string] {
     ];
 }
 
+function all(): Array<any> {
+    return [];
+}
+
+function readByDirector(model: any): [string] {
+    return [
+        model.director
+    ];
+}
+
+function destroy(model: any): [number] {
+    return [
+        model.movieid
+    ];
+}
+
 export default {
-    create
+    create,
+    all,
+    readByDirector,
+    destroy
 };

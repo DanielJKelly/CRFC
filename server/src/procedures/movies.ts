@@ -11,6 +11,10 @@ class Movies extends Model {
     readFromApi(id: number) {
         return repo.read(id);
     }
+
+    readByDirector(args: any) {
+        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Director`, validators.readByDirector(args));
+    }
 }
 
 export default new Movies();

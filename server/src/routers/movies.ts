@@ -7,6 +7,9 @@ const router = Router();
 
 router
     .get('/:id', asyncWrapper(controllers.readFromApi), complete)
-    .post('/', asyncWrapper(controllers.create), complete);
+    .post('/', asyncWrapper(controllers.create), complete)
+    .get('/', asyncWrapper(controllers.all), complete)
+    .get('/directors/:director', asyncWrapper(controllers.readByDirector), complete)
+    .delete('/', asyncWrapper(controllers.destroy), complete);
 
 export default router;

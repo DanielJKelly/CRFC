@@ -45,7 +45,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS spGetMoviesByDirector;
 DELIMITER $$
 CREATE PROCEDURE spGetMoviesByDirector(
-    IN  p_director int
+    IN  p_director varchar(128)
 )
 BEGIN
     SELECT 
@@ -59,6 +59,7 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS spGetMovies;
 DELIMITER $$
+
 CREATE PROCEDURE spGetMovies(
 
 )

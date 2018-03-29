@@ -17,7 +17,37 @@ async function create(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+async function all(req: Request, res: Response, next: NextFunction) {
+    let movies = await procedures.all();
+
+    res.body = movies;
+
+    next();
+}
+
+async function readByDirector(req: Request, res: Response, next: NextFunction) {
+    console.log('params: ', req.params);
+    let director = { director: req.params.director };
+    
+    let movies = await procedures.readByDirector(director);
+
+    res.body = movies;
+
+    next();
+}
+
+async function destroy(req: Request, res: Response, next: NextFunction) {
+    await procedures.destroy(req.body);
+
+    res.body = true;
+
+    next();
+}
+
 export default {
     readFromApi,
-    create
+    create,
+    all,
+    readByDirector,
+    destroy
 };
