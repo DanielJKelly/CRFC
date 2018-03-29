@@ -68,5 +68,23 @@ BEGIN
         *
     FROM 
         Movies;
-END
+END$$
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spInsertUsersMoviesXRef;
+DELIMITER $$
+CREATE PROCEDURE spInsertUsersMoviesXRef(
+    IN p_userid int, 
+    IN p_movieid int
+)
+BEGIN 
+    INSERT INTO UsersMoviesXRef(
+        userid, 
+        movieid
+    ) 
+    VALUES (
+        p_userid, 
+        p_movieid
+    );
+END$$
 DELIMITER ;
