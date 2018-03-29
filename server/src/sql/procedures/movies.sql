@@ -26,3 +26,18 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spDeleteMovie;
+DELIMITER $$
+CREATE PROCEDURE spDeleteMovie(
+    IN p_id
+)
+BEGIN
+    DELETE 
+
+    FROM
+        Movies
+    WHERE 
+        id = p_id;
+END$$
+DELIMITER ;
