@@ -30,7 +30,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS spDeleteMovie;
 DELIMITER $$
 CREATE PROCEDURE spDeleteMovie(
-    IN p_id
+    IN p_id int
 )
 BEGIN
     DELETE 
@@ -45,7 +45,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS spGetMoviesByDirector;
 DELIMITER $$
 CREATE PROCEDURE spGetMoviesByDirector(
-    IN  p_director
+    IN  p_director int
 )
 BEGIN
     SELECT 
