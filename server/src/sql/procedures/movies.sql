@@ -41,3 +41,31 @@ BEGIN
         id = p_id;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spGetMoviesByDirector;
+DELIMITER $$
+CREATE PROCEDURE spGetMoviesByDirector(
+    IN  p_director
+)
+BEGIN
+    SELECT 
+        * 
+    FROM 
+        Movies 
+    WHERE 
+        director = p_director
+END$$
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spGetMovies;
+DELIMITER $$
+CREATE PROCEDURE spGetMovies(
+
+)
+BEGIN
+    SELECT 
+        *
+    FROM 
+        Movies
+END
+DELIMITER ;
