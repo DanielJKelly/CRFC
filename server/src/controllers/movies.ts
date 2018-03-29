@@ -44,10 +44,21 @@ async function destroy(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+async function readByUser(req: Request, res: Response, next: NextFunction) {
+    let userid = { id: req.params.id };
+
+    let movies = await procedures.readByUser(userid);
+
+    res.body = movies;
+
+    next();
+}
+
 export default {
     readFromApi,
     create,
     all,
     readByDirector,
-    destroy
+    destroy,
+    readByUser
 };

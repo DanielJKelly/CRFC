@@ -10,6 +10,7 @@ router
     .post('/', asyncWrapper(controllers.create), complete)
     .get('/', asyncWrapper(controllers.all), complete)
     .get('/directors/:director', asyncWrapper(controllers.readByDirector), complete)
-    .delete('/', asyncWrapper(controllers.destroy), complete);
+    .delete('/', asyncWrapper(controllers.destroy), complete)
+    .get('/users/:id', asyncWrapper(controllers.readByUser), complete);
 
 export default router;

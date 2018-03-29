@@ -23,9 +23,16 @@ function destroy(model: any): [number] {
     ];
 }
 
+function readByUser(model: any): [number] {
+    return [
+        model.id
+    ];
+}
+
 export default {
     create,
     all,
     readByDirector,
-    destroy
+    destroy,
+    readByUser
 };

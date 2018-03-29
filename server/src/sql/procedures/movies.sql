@@ -109,18 +109,4 @@ BEGIN
 END$$
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS spGetUsersByMovie;
-DELIMITER $$ 
-CREATE PROCEDURE spGetUsersByMovie(
-    IN p_movieid int
-)
-BEGIN  
-    SELECT 
-        userid
-    FROM 
-        UsersMoviesXRef
-    WHERE
-        movieid = p_movieid;
-END$$
-DELIMITER ;
 
