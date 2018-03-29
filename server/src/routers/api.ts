@@ -5,6 +5,7 @@ import search from './search';
 import recommendations from './recommendations';
 import ratings from './ratings';
 import lists from './lists';
+import recrequests from './recrequests';
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router
     .use('/search', search)
     .use('/recommendations', recommendations)
     .use('/ratings', ratings)
-    .use('/lists', lists);
+    .use('/lists', lists)
+    .use('/recRequests', recrequests);
 
 export default router;

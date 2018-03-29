@@ -1,12 +1,12 @@
-DROP PROCEDURE IF EXISTS spInsertRecRequest;
+DROP PROCEDURE IF EXISTS spInsertRecrequest;
 DELIMITER $$
-CREATE PROCEDURE spInsertRecRequest(
+CREATE PROCEDURE spInsertRecrequest(
     IN p_requesterid int,
     IN p_recommenderid int
 )
 BEGIN
 
-    INSERT INTO RecRequests (
+    INSERT INTO Recrequests (
         requesterid,
         recommenderid,
         isFulfilled
@@ -23,9 +23,9 @@ BEGIN
 END$$
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS spGetRecRequestsByRecommender;
+DROP PROCEDURE IF EXISTS spGetRecrequestsByRecommender;
 DELIMITER $$
-CREATE PROCEDURE spGetRecRequestsByRecommender(
+CREATE PROCEDURE spGetRecrequestsByRecommender(
     IN p_recommenderid INT
 )
 BEGIN
@@ -33,16 +33,16 @@ BEGIN
     SELECT
         *
     FROM
-        RecRequests
+        Recrequests
     WHERE
         recommenderid = p_recommenderid;
 
 END$$
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS spGetRecRequestsByRequester;
+DROP PROCEDURE IF EXISTS spGetRecrequestsByRequester;
 DELIMITER $$
-CREATE PROCEDURE spGetRecRequestsByRequester(
+CREATE PROCEDURE spGetRecrequestsByRequester(
     IN p_requesterid INT
 )
 
@@ -50,22 +50,22 @@ BEGIN
     SELECT 
         * 
     FROM
-        RecRequests
+        Recrequests
     WHERE 
         requesterid = p_requesterid; 
 
 END$$
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS spUpdateRecRequest;
+DROP PROCEDURE IF EXISTS spUpdateRecrequest;
 DELIMITER $$
-CREATE PROCEDURE spUpdateRecRequest(
+CREATE PROCEDURE spUpdateRecrequest(
     IN p_id INT 
 )
 
 BEGIN 
     UPDATE 
-        RecRequests
+        Recrequests
     SET 
         isFulfilled = 1 
     WHERE
@@ -75,15 +75,15 @@ BEGIN
 END$$
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS spDeleteRecRequest;
+DROP PROCEDURE IF EXISTS spDeleteRecrequest;
 DELIMITER $$
-CREATE PROCEDURE spDeleteRecRequest(
+CREATE PROCEDURE spDeleteRecrequest(
     IN p_id INT
 )
 BEGIN 
     DELETE 
     FROM
-        RecRequests
+        Recrequests
     WHERE 
         id = p_id;
 END$$

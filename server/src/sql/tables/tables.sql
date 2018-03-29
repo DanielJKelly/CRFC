@@ -96,9 +96,9 @@ alter table ListsMoviesXref
 add constraint pk_listsmovies
 primary key(listid, movieid);
 
-drop table if exists RecRequests;
+drop table if exists Recrequests;
 
-create table RecRequests (
+create table Recrequests (
 	id int not null auto_increment primary key,
 	requesterid int not null,
 	recommenderid int not null,
