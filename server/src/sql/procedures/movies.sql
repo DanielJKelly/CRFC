@@ -53,7 +53,7 @@ BEGIN
     FROM 
         Movies 
     WHERE 
-        director = p_director
+        director = p_director;
 END$$
 DELIMITER ;
 
@@ -66,6 +66,6 @@ BEGIN
     SELECT 
         *
     FROM 
-        Movies
+        Movies;
 END
 DELIMITER ;
