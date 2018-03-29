@@ -8,11 +8,11 @@ class Recommendations extends Model {
     }
 
     readByRecipient(args: any) {
-      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recipient`, this.validators.readByRecipient(args));
+        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recipient`, validators.readByRecipient(args));
     }
 
     readByRecommender(args: any) {
-      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recommender`, this.validators.readByRecommender(args));
+        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recommender`, validators.readByRecommender(args));
     }
 }
 

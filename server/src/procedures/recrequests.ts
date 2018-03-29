@@ -8,11 +8,11 @@ class recRequests extends Model {
     }
 
     readByRequester(args: any) {
-      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Requester`, this.validators.readByRequester(args));
+        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Requester`, validators.readByRequester(args));
     }
 
     readByRecommender(args: any) {
-      return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recommender`, this.validators.readByRecommender(args));
+        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Recommender`, validators.readByRecommender(args));
     }
 }
 

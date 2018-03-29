@@ -8,11 +8,11 @@ class Lists extends Model {
     }
 
     readByUser(args: any) {
-        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}User`, this.validators.readByUser(args));
+        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}User`, validators.readByUser(args));
     }
 
     createListItem(args: any) {
-        return this.rows(`${this.SQL_INSERT}${pluralize(this.model)}MoviesXRef`, this.validators.createListItem(args));
+        return this.rows(`${this.SQL_INSERT}${pluralize(this.model)}MoviesXRef`, validators.createListItem(args));
     }
 
     readById(args: any) {
