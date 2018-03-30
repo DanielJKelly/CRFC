@@ -87,8 +87,7 @@ CREATE PROCEDURE spGetRatingsByMovie(
 )
 BEGIN 
     SELECT
-        userid, 
-        rating
+        COUNT(*), AVG(rating)
     FROM 
         Ratings 
 
