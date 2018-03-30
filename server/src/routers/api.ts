@@ -16,6 +16,6 @@ router
     .use('/recommendations', recommendations)
     .use('/ratings', ratings)
     .use('/lists', lists)
-    .use('/recRequests', recrequests);
+    .use('/recrequests', recrequests);
 
 export default router;
