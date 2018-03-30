@@ -87,7 +87,7 @@ CREATE PROCEDURE spGetUsersByMovie(
 )
 BEGIN  
     SELECT 
-        userid
+        count(*)
     FROM 
         UsersMoviesXRef
     WHERE

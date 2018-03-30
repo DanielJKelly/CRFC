@@ -36,7 +36,8 @@ function destroy(model:any): [number] {
 function destroyFromList(model:any): Array<any> {
     return [
         model.movieid,
-        model.id
+        model.id,
+        model.ranking
     ];
 }
 

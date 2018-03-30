@@ -78,7 +78,15 @@ CREATE PROCEDURE spInsertListsMoviesXRef(
     p_ranking int
 )
 BEGIN
-
+    UPDATE 
+        ListsMoviesXRef 
+    
+    SET 
+        ranking = ranking + 1
+    
+    WHERE
+        ranking >= p_ranking AND listid = p_listid;
+    
     INSERT INTO ListsMoviesXRef (
         listid,
         movieid,
@@ -116,7 +124,8 @@ DROP PROCEDURE IF EXISTS spDeleteListsMoviesXRef;
 DELIMITER $$
 CREATE PROCEDURE spDeleteListsMoviesXRef(
     IN p_movieid INT,
-    IN p_listid INT
+    IN p_listid INT,
+    IN p_ranking INT
 )
 BEGIN
 
@@ -126,5 +135,12 @@ BEGIN
         ListsMoviesXRef
     WHERE
         p_movieid = movieid AND p_listid = listid;
+    
+    UPDATE ListsMoviesXRef 
+        SET 
+            ranking = ranking - 1
+        WHERE 
+            ranking > p_ranking AND listid = p_listid;
+
 END$$
 DELIMITER ;
