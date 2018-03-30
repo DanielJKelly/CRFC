@@ -127,7 +127,9 @@ BEGIN
         director = COALESCE(p_director, director),
         poster = COALESCE(p_poster, poster)
     WHERE
-        id = p_id;
+        id = p_id
+    LIMIT 
+        1;
 END$$
 DELIMITER ;
 
