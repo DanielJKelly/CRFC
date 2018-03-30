@@ -64,7 +64,14 @@ async function destroyFromList(req: Request, res: Response, next: NextFunction) 
     res.body = true;
     
     next();
+}
 
+async function update(req: Request, res: Response, next: NextFunction) {
+    await procedures.update(req.body);
+
+    res.body = true;
+    
+    next();
 }
 
 export default {
@@ -73,5 +80,6 @@ export default {
     readById,
     createListItem,
     destroy,
-    destroyFromList
+    destroyFromList,
+    update
 }

@@ -41,11 +41,19 @@ function destroyFromList(model:any): Array<any> {
     ];
 }
 
+function update(model:any): [number, string] {
+    return [
+        model.id, 
+        model.name
+    ];
+}
+
 export default {
     readByUser,
     create,
     createListItem,
     readById,
     destroy,
-    destroyFromList
+    destroyFromList,
+    update
 };

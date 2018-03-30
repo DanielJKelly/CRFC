@@ -11,6 +11,7 @@ router
     .post('/', asyncWrapper(controllers.create), complete)
     .post('/:id', asyncWrapper(controllers.createListItem), complete)
     .delete('/', asyncWrapper(controllers.destroy), complete)
-    .delete('/:id', asyncWrapper(controllers.destroyFromList), complete);
+    .delete('/:id', asyncWrapper(controllers.destroyFromList), complete)
+    .put('/', asyncWrapper(controllers.update), complete);
 
 export default router;
