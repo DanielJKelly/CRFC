@@ -1,5 +1,5 @@
 import * as lodash from 'lodash';
-import { isObject } from 'util';
+import { isObject, isUndefined } from 'util';
 
 /**
  * @name isPresent
@@ -164,4 +164,22 @@ export const idPropsToNums = (obj: any = {}): void => {
             obj[key] = lodash.toNumber(val);
         }
     });
+}
+
+/**
+ * @name formatRating
+ * @memberof Utils
+ * @kind function
+ * @description
+ * Convert rating from range [0,4] to [0, 40]
+ * @param rating the rating to convert 
+ */
+
+export const formatRating = (rating: any): number => {
+    if (isUndefined(rating) || isObject(rating)) {
+        return null;
+    } 
+    let formatted = lodash.toNumber(rating);
+
+    return formatted * 10;
 }

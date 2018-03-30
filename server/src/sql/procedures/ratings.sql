@@ -18,6 +18,9 @@ BEGIN
         p_rating
     );
 
+    SELECT 
+        LAST_INSERT_ID() AS ID;
+
 END$$
 DELIMITER ;
 
@@ -68,7 +71,7 @@ BEGIN
         m.director,
         m.poster,
         r.userid, 
-        r.rating
+        r.rating / 10 as rating
     FROM 
         Ratings r
     JOIN
@@ -87,7 +90,7 @@ CREATE PROCEDURE spGetRatingsByMovie(
 )
 BEGIN 
     SELECT
-        COUNT(*), AVG(rating)
+        COUNT(*) as count, AVG(rating) / 10 as averageRating
     FROM 
         Ratings 
 

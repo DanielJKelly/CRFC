@@ -1,7 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import procedures from '../procedures/ratings';
+import { formatRating } from '../utils';
 
 async function create(req: Request, res: Response, next: NextFunction) {
+    req.body.rating = formatRating(req.body.rating);
+    
     await procedures.create(req.body);
 
     res.body = true;
@@ -19,6 +22,8 @@ async function destroy(req: Request, res: Response, next: NextFunction) {
 }
 
 async function update(req: Request, res: Response, next: NextFunction) {
+    req.body.rating = formatRating(req.body.rating);
+    
     await procedures.update(req.body);
 
     res.body = true;
