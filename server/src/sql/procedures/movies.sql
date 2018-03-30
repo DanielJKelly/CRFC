@@ -109,4 +109,27 @@ BEGIN
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS spUpdateMovie;
+DELIMITER $$
+CREATE PROCEDURE spUpdateMovie(
+    IN p_id int,
+    IN p_mdbid int, 
+    IN p_title varchar(256),
+    IN p_director varchar(128),
+    IN p_poster varchar(256)
+)
+BEGIN
+    UPDATE 
+        Movies 
+    SET 
+        mdbid = COALESCE(p_mdbid, mdbid),
+        title = COALESCE(p_title, title),
+        director = COALESCE(p_director, director),
+        poster = COALESCE(p_poster, poster)
+    WHERE
+        id = p_id;
+END$$
+DELIMITER ;
+
+
 

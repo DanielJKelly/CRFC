@@ -29,10 +29,21 @@ function readByUser(model: any): [number] {
     ];
 }
 
+function update(model: any): [number, number, string, string, string] {
+    return [
+        model.id,
+        model.mdbid,
+        model.title,
+        model.director,
+        model.poster
+    ];
+}
+
 export default {
     create,
     all,
     readByDirector,
     destroy,
-    readByUser
+    readByUser,
+    update
 };
