@@ -12,7 +12,14 @@ function all(): Array<any> {
     return [];
 } 
 
+function readByMovie(model: any): [number] {
+    return [
+        model.id
+    ];
+}
+
 export default {
     all,
-    create
+    create,
+    readByMovie
 };

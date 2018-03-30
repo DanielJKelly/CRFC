@@ -17,9 +17,20 @@ async function create(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
+async function readByMovie(req: Request, res: Response, next: NextFunction) {
+    let movieid = { id: req.params.id };
+
+    let userids = await procedures.readByMovie(movieid);
+
+    res.body = userids;
+
+    next();
+}
+
 
 
 export default {
     all,
-    create
+    create,
+    readByMovie
 };

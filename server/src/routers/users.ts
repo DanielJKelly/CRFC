@@ -8,6 +8,7 @@ let router = Router();
 
 router 
     .get('/', asyncWrapper(controllers.all), complete)
-    .post('/', asyncWrapper(controllers.create), complete);
+    .post('/', asyncWrapper(controllers.create), complete)
+    .get('/movies/:id', asyncWrapper(controllers.readByMovie), complete);
 
 export default router;
