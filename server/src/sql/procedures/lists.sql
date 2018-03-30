@@ -144,3 +144,21 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spUpdateList;
+DELIMITER $$
+CREATE PROCEDURE spUpdateList(
+    IN p_id int,
+    IN p_name varchar(48)
+)
+BEGIN 
+    UPDATE
+        Lists 
+    SET 
+        name = p_name 
+    WHERE 
+        id = p_id
+    LIMIT 
+        1;
+END$$
+DELIMITER ;
