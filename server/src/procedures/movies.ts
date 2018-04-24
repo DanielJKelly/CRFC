@@ -1,11 +1,20 @@
 import Model from './model';
 import repo from '../api/repositories/movies.repo';
-import { pluralize } from '../utils';
-import validators from '../validators/movies';
+import { pluralize, capitalize} from '../utils';
+import movieValidators from '../validators/movies';
 
 class Movies extends Model {
+    protected COLUMNS = {
+        MDBID: 'mdbid',
+        TITLE: 'title',
+        DIRECTOR: 'director',
+        POSTER: 'poster',
+    };
+
+    validators = movieValidators;
+
     constructor() {
-        super('movie', validators);
+        super('movie');
     }
 
     readFromApi(id: number) {
@@ -13,11 +22,15 @@ class Movies extends Model {
     }
 
     readByDirector(args: any) {
-        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Director`, validators.readByDirector(args));
+        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}${capitalize(this.COLUMNS.DIRECTOR)}`, this.validators.readByDirector(args));
     }
 
     readByUser(args: any) {
-        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}User`, validators.readByUser(args));
+        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}User`, this.validators.readByUser(args));
+    }
+
+    readWithFilter(args: any) {
+
     }
 }
 

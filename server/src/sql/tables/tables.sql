@@ -6,7 +6,7 @@ create table Lists (
     name varchar(48) not null,
 	isOrdered boolean not null,
 	_created datetime default current_timestamp,
-	_updated datetime default current_timestamp
+	_updated datetime default current_timestamp on update current_timestamp
 );
 
 drop table if exists Movies;
@@ -18,7 +18,7 @@ create table Movies (
     director varchar(128) not null,
     poster varchar(256),
 	_created datetime default current_timestamp,
-	_updated datetime default current_timestamp
+	_updated datetime default current_timestamp on update current_timestamp
 );
 
 drop table if exists Users;
@@ -30,7 +30,7 @@ create table Users (
 	email varchar(128) not null,
 	username varchar(48) not null,
 	_created datetime default current_timestamp,
-	_updated datetime default current_timestamp
+	_updated datetime default current_timestamp on update current_timestamp
 );
 
 drop table if exists Recommendations;
@@ -42,7 +42,7 @@ create table Recommendations (
     movieid int not null,
     isSeen boolean default 0,
     _created datetime default current_timestamp,
-	_updated datetime default current_timestamp
+	_updated datetime default current_timestamp on update current_timestamp
 );
 
 drop table if exists Ratings;
@@ -52,7 +52,7 @@ create table Ratings (
     movieid int not null,
     rating int not null,
 	_created datetime default current_timestamp,
-	_updated datetime default current_timestamp
+	_updated datetime default current_timestamp on update current_timestamp
 );
 
 alter table Ratings
@@ -65,7 +65,7 @@ create table UsersMoviesXref (
     userid int not null,
     movieid int not null,
 	_created datetime default current_timestamp,
-	_updated datetime default current_timestamp
+	_updated datetime default current_timestamp on update current_timestamp
 );
 
 alter table UsersMoviesXref
@@ -74,12 +74,13 @@ primary key(userid, movieid);
 
 drop table if exists Passwords;
 
+drop table if exists Passwords;
 create table Passwords (
-	id int not null auto_increment primary key,
-    userid int not null,
+    id int not null auto_increment primary key,
+    userid char(36) not null,
     hash varchar(256) not null,
-	_created datetime default current_timestamp,
-	_updated datetime default current_timestamp
+    _created datetime default current_timestamp,
+    _updated datetime default current_timestamp on update current_timestamp
 );
 
 drop table if exists ListsMoviesXref;
@@ -89,7 +90,7 @@ create table ListsMoviesXref (
     movieid int not null,
 	ranking int,
 	_created datetime default current_timestamp,
-	_updated datetime default current_timestamp
+	_updated datetime default current_timestamp on update current_timestamp
 );
 
 alter table ListsMoviesXref
@@ -104,5 +105,5 @@ create table Recrequests (
 	recommenderid int not null,
 	isFulfilled boolean default 0,
 	_created datetime default current_timestamp,
-	_updated datetime default current_timestamp
+	_updated datetime default current_timestamp on update current_timestamp
 );

@@ -1,10 +1,19 @@
 import Model from './model';
-import validators from '../validators/users';
+import userValidators from '../validators/users';
 import { pluralize } from '../utils';
 
 class Users extends Model {
+    protected COLUMNS = {
+        FIRSTNAME: 'firstname',
+        LASTNAME: 'lastname',
+        EMAIL: 'email',
+        USERNAME: 'username'
+    };
+
+    validators = userValidators;
+    
     constructor() {
-        super('user', validators);
+        super('user');
     }
 
     readByEmail(email: string) {
@@ -12,7 +21,7 @@ class Users extends Model {
     }
 
     readByMovie(args: any) {
-        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Movie`, validators.readByMovie(args));
+        return this.rows(`${this.SQL_GET}${pluralize(this.model)}${this.SQL_CONDITIONS.BY}Movie`, this.validators.readByMovie(args));
     }
 }
 

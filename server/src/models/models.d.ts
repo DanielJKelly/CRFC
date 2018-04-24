@@ -7,6 +7,53 @@ declare module Express {
 }
 
 declare module models {
+    interface IValidators {
+        all?: Function;
+        create?: Function;
+        read?: Function;
+        update?: Function;
+        destroy?: Function;
+    }
+
+    export const enum TOKEN_TYPES {
+        AUTHENTICATION,
+        REGISTRATION,
+        RESET
+    }
+
+    export const enum FORM_TYPES {
+        CREATE = 'create',
+        FULLUPDATE = 'fullUpdate',
+        PARTIALUPDATE = 'partialUpdate'
+    }
+
+    interface ICreateForm {
+        meta: any;
+        fields: Array<IFormField>;
+    }
+
+    interface IFormField {
+        name: string;
+        label: string;
+        type: string;
+        required?: boolean;
+        meta?: any;
+    }
+
+    interface IRegistrationToken {
+        id?: number;
+        permissions?: number;
+        _created?: any;
+    }
+
+    interface IRegistrationEmail {
+        id?: number;
+        registrationtokenid?: number;
+        email?: string;
+        isverified?: boolean;
+        _created?: any;
+    }
+
     namespace server {
         namespace TMDB {
             interface IMovie {
