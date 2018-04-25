@@ -183,3 +183,18 @@ export const formatRating = (rating: any): number => {
 
     return formatted * 10;
 }
+
+
+const wildcardRegex = /^\*|\*$/g;
+
+export function processWildcards(value: string): string {
+    if (lodash.isNil(value)) {
+        return null;
+    }
+
+    if (!lodash.isString(value)) {
+        return value;
+    }
+    
+    return value.replace(wildcardRegex, '%');
+}

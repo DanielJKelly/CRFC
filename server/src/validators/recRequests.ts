@@ -1,3 +1,13 @@
+import * as joi from 'joi';
+import {
+    validate,
+    mapRequired,
+    IRequiredKeys,
+} from './base';
+import {
+    ObjectSchema,
+} from 'joi';
+
 function readByRecommender(model: any): [number] {
     return [
         model.id

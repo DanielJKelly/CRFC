@@ -1,3 +1,13 @@
+import * as joi from 'joi';
+import {
+    validate,
+    mapRequired,
+    IRequiredKeys,
+} from './base';
+import {
+    ObjectSchema,
+} from 'joi';
+
 function create(model: any): [number, number, number] {
         return [
             model.userid,

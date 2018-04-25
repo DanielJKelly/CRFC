@@ -15,6 +15,14 @@ declare module models {
         destroy?: Function;
     }
 
+    interface IAppMovie {
+        id: number, 
+        mdbid: number,
+        title: string, 
+        director: string,
+        poster?: string 
+    }
+
     export const enum TOKEN_TYPES {
         AUTHENTICATION,
         REGISTRATION,
